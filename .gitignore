@@ -1,0 +1,22 @@
+
+# Environment Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# File sementara dan cache
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Gambar hasil upload pengguna
+static/uploads/*
+!static/uploads/.gitkeep
+
+# File rahasia
+.env
+.env.*
+!.env.example
+
+# File editor
+.vscode/

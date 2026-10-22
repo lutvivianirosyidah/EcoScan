@@ -1,0 +1,1184 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoScan — Kenali, Pilah, Lestarikan</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --green: #286747;
+            --dark-green: #193f2c;
+            --light-green: #e8efe4;
+            --cream: #faf9f4;
+            --text: #26372c;
+            --muted: #788078;
+            --border: #e8e9e1;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(1360px, 92%);
+            margin: 0 auto;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 249, 244, 0.97);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-content {
+            min-height: 100px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            justify-self: start;
+            gap: 13px;
+            font-family: "Manrope", sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .brand-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 17px;
+            background: var(--green);
+            color: white;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #59665b;
+            font-size: 16px;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--green);
+        }
+
+        .nav-button,
+        .primary-button,
+        .secondary-button,
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .nav-button {
+            justify-self: end;
+            min-height: 58px;
+            padding: 0 25px;
+            background: var(--green);
+            color: white;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        .nav-button:hover,
+        .primary-button:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        /* BERANDA */
+        .hero {
+            padding: 80px 0 90px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--light-green);
+            color: var(--green);
+            padding: 11px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(42px, 5vw, 68px);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -2px;
+            margin: 25px 0 20px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero-description {
+            max-width: 540px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .primary-button,
+        .secondary-button {
+            padding: 16px 24px;
+            font-size: 14px;
+        }
+
+        .primary-button {
+            background: var(--green);
+            color: white;
+        }
+
+        .secondary-button {
+            border: 1px solid #dfe4da;
+            background: white;
+        }
+
+        .secondary-button:hover {
+            border-color: var(--green);
+            transform: translateY(-2px);
+        }
+
+        .hero-note {
+            margin-top: 25px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* FOTO BERANDA */
+        .hero-visual {
+            position: relative;
+            height: 480px;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #e9efe3;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-fallback {
+            display: none;
+            height: 100%;
+            padding: 35px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .hero-fallback .big-icon {
+            font-size: 90px;
+        }
+
+        .hero-fallback h2 {
+            margin: 18px 0 8px;
+            font-family: "Manrope", sans-serif;
+        }
+
+        .hero-fallback p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .floating-card {
+            position: absolute;
+            left: 22px;
+            bottom: 22px;
+            padding: 17px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 17px;
+            box-shadow: 0 10px 35px #193f2c15;
+        }
+
+        .floating-card strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .floating-card small {
+            display: block;
+            color: var(--muted);
+            margin-top: 5px;
+            font-size: 11px;
+        }
+
+        section {
+            scroll-margin-top: 110px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 38px;
+        }
+
+        .section-label {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.2;
+            letter-spacing: -1.3px;
+            margin-top: 13px;
+        }
+
+        .section-heading > p {
+            max-width: 400px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* KATEGORI: 2 KOLOM DAN 2 BARIS */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .category-card {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px #193f2c12;
+        }
+
+        /* AREA FOTO LANDSCAPE */
+        .category-image-box {
+            width: 100%;
+            height: 330px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f3eb;
+            overflow: hidden;
+        }
+
+        /* FOTO MEMENUHI KOTAK */
+        .category-image-box img {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .category-content {
+            flex: 1;
+            padding: 25px 27px 28px;
+        }
+
+        .category-number {
+            color: #6b9470;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .category-content h3 {
+            margin: 12px 0;
+            font-family: "Manrope", sans-serif;
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .category-content p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .text-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .text-link:hover {
+            color: var(--dark-green);
+        }
+
+        /* EDUKASI */
+        .education-section {
+            background: white;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .education-image-box {
+            height: 400px;
+            overflow: hidden;
+            border-radius: 26px;
+            background: #e5eddf;
+        }
+
+        .education-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .education-fallback {
+            display: none;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .education-fallback span {
+            font-size: 85px;
+        }
+
+        .education-copy h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(30px, 4vw, 43px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            margin: 15px 0;
+        }
+
+        .education-copy > p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .education-list {
+            display: grid;
+            gap: 18px;
+            margin: 27px 0;
+        }
+
+        .education-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .education-icon {
+            min-width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            background: var(--light-green);
+            border-radius: 13px;
+            font-size: 20px;
+        }
+
+        .education-item strong {
+            font-size: 14px;
+        }
+
+        .education-item p {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* CARA KERJA */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .step-card {
+            padding: 30px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 23px;
+        }
+
+        .step-icon {
+            display: grid;
+            place-items: center;
+            width: 62px;
+            height: 62px;
+            border-radius: 18px;
+            background: var(--light-green);
+            font-size: 28px;
+        }
+
+        .step-card h3 {
+            margin: 23px 0 10px;
+            font-family: "Manrope", sans-serif;
+            font-size: 20px;
+        }
+
+        .step-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .step-number {
+            display: block;
+            margin-bottom: 15px;
+            color: #7d9c7e;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        /* AJAKAN */
+        .cta {
+            padding: 0 0 85px;
+        }
+
+        .cta-inner {
+            padding: 55px;
+            background: var(--dark-green);
+            color: white;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .cta-inner h2 {
+            max-width: 600px;
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.25;
+        }
+
+        .cta-inner p {
+            margin-top: 13px;
+            color: #d1dfd2;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            flex-shrink: 0;
+            padding: 18px 25px;
+            background: white;
+            color: var(--dark-green);
+            font-size: 14px;
+        }
+
+        .cta-button:hover {
+            background: var(--light-green);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            font-family: "Manrope", sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .footer-content p,
+        .footer-note {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer-content p {
+            margin-top: 5px;
+        }
+
+        /* TABLET */
+        @media (max-width: 1050px) {
+            .nav-content {
+                grid-template-columns: 1fr auto;
+                padding: 15px 0;
+                row-gap: 18px;
+            }
+
+            .nav-links {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 23px;
+                padding-bottom: 5px;
+            }
+
+            .nav-button {
+                grid-column: 2;
+                grid-row: 1;
+                min-height: 52px;
+                padding: 0 20px;
+                font-size: 14px;
+            }
+
+            .brand {
+                font-size: 29px;
+            }
+
+            .brand-icon {
+                width: 53px;
+                height: 53px;
+                font-size: 29px;
+            }
+
+            .hero-grid {
+                gap: 30px;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .category-image-box {
+                height: 290px;
+            }
+
+            .education-grid {
+                gap: 30px;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 650px) {
+            .container {
+                width: 90%;
+            }
+
+            .nav-content {
+                grid-template-columns: 1fr auto;
+                gap: 14px;
+            }
+
+            .brand {
+                font-size: 24px;
+                gap: 9px;
+            }
+
+            .brand-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 13px;
+                font-size: 25px;
+            }
+
+            .nav-button {
+                min-height: 42px;
+                padding: 0 13px;
+                font-size: 11px;
+            }
+
+            .nav-links {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 45px 0 55px;
+            }
+
+            .hero-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+                letter-spacing: -1.5px;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .section {
+                padding: 55px 0;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            /* HP: SATU KARTU PER BARIS */
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .category-image-box {
+                height: 240px;
+            }
+
+            .category-content {
+                padding: 22px;
+            }
+
+            .category-content h3 {
+                font-size: 20px;
+            }
+
+            .education-image-box {
+                height: 270px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .cta {
+                padding-bottom: 55px;
+            }
+
+            .cta-inner {
+                padding: 30px 25px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-content {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        /* HP SANGAT KECIL */
+        @media (max-width: 380px) {
+            .brand {
+                font-size: 21px;
+            }
+
+            .brand-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-button {
+                padding: 0 10px;
+                font-size: 10px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="{{ url_for('index') }}" class="brand">
+                <span class="brand-icon">♻</span>
+                EcoScan
+            </a>
+
+            <nav class="nav-links">
+                <a href="{{ url_for('index') }}" class="active">Beranda</a>
+                <a href="{{ url_for('kategori') }}">Kategori</a>
+                <a href="{{ url_for('edukasi') }}">Edukasi</a>
+                <a href="{{ url_for('cara_kerja') }}">Cara Kerja</a>
+            </nav>
+
+            <a href="{{ url_for('deteksi') }}" class="nav-button">
+                Mulai Deteksi ↗
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- BERANDA -->
+        <section class="hero">
+            <div class="container hero-grid">
+
+                <div class="hero-copy">
+                    <span class="eyebrow">🌱 Small steps, greener earth</span>
+
+                    <h1>
+                        Kenali Sampah.<br>
+                        <span>Jaga Bumi.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Bingung cara memilah kemasan bekas di rumah?
+                        EcoScan membantu kamu mengenali kategori kemasan
+                        melalui foto dan mempelajari cara pemilahan
+                        yang lebih bertanggung jawab.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="{{ url_for('deteksi') }}" class="primary-button">
+                            Mulai Deteksi ↗
+                        </a>
+
+                        <a href="{{ url_for('edukasi') }}" class="secondary-button">
+                            Pelajari Dulu
+                        </a>
+                    </div>
+
+                    <p class="hero-note">
+                        ♻ Kenali · Pilah · Kelola dengan bijak
+                    </p>
+                </div>
+
+                <div class="hero-visual">
+                    <img
+                        src="{{ url_for('static', filename='images/beranda.png') }}"
+                        alt="Kegiatan memilah dan mendaur ulang sampah"
+                        class="hero-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+
+                    <div class="hero-fallback">
+                        <div class="big-icon">🌿</div>
+                        <h2>Small steps, greener earth</h2>
+                        <p>
+                            Mulai kebiasaan baik dengan mengenali
+                            dan memilah sampah dari rumah.
+                        </p>
+                    </div>
+
+                    <div class="floating-card">
+                        <strong>♻ Mulai dari rumah</strong>
+                        <small>Langkah kecil untuk bumi yang lebih baik</small>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KATEGORI KEMASAN -->
+        <section class="section" id="kategori">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">Packaging categories</span>
+                        <h2>Kenali jenis kemasan</h2>
+                    </div>
+
+                    <p>
+                        Setiap jenis kemasan memiliki karakteristik berbeda.
+                        Kenali bentuknya sebelum menentukan cara
+                        pemilahan yang sesuai.
+                    </p>
+                </div>
+
+                <div class="category-grid">
+
+                    <article class="category-card">
+                        <div class="category-image-box">
+                            <img
+                                src="{{ url_for('static', filename='images/sachet.jpg') }}"
+                                alt="Contoh kemasan sachet"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="category-content">
+                            <span class="category-number">CATEGORY 01</span>
+                            <h3>Kemasan Sachet</h3>
+                            <p>
+                                Kemasan kecil untuk kopi, sampo, saus,
+                                dan produk dalam kemasan sekali pakai.
+                            </p>
+                            <a href="{{ url_for('kategori') }}" class="text-link">
+                                Kenali lebih lanjut →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="category-card">
+                        <div class="category-image-box">
+                            <img
+                                src="{{ url_for('static', filename='images/botol.jpg') }}"
+                                alt="Contoh botol plastik"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="category-content">
+                            <span class="category-number">CATEGORY 02</span>
+                            <h3>Botol Plastik</h3>
+                            <p>
+                                Botol minuman atau kemasan produk rumah
+                                tangga yang dapat dipilah sesuai material.
+                            </p>
+                            <a href="{{ url_for('kategori') }}" class="text-link">
+                                Kenali lebih lanjut →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="category-card">
+                        <div class="category-image-box">
+                            <img
+                                src="{{ url_for('static', filename='images/gelas.jpg') }}"
+                                alt="Contoh gelas plastik"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="category-content">
+                            <span class="category-number">CATEGORY 03</span>
+                            <h3>Gelas Plastik</h3>
+                            <p>
+                                Gelas minuman sekali pakai, termasuk
+                                gelas kopi, teh, dan minuman kekinian.
+                            </p>
+                            <a href="{{ url_for('kategori') }}" class="text-link">
+                                Kenali lebih lanjut →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="category-card">
+                        <div class="category-image-box">
+                            <img
+                                src="{{ url_for('static', filename='images/kotak_makanan.jpg') }}"
+                                alt="Contoh kotak makanan"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="category-content">
+                            <span class="category-number">CATEGORY 04</span>
+                            <h3>Kotak Makanan</h3>
+                            <p>
+                                Wadah makanan berbentuk kotak, seperti
+                                kotak plastik atau styrofoam.
+                            </p>
+                            <a href="{{ url_for('kategori') }}" class="text-link">
+                                Kenali lebih lanjut →
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUKASI -->
+        <section class="section education-section" id="edukasi">
+            <div class="container education-grid">
+
+                <div class="education-image-box">
+                    <img
+                        src="{{ url_for('static', filename='images/edukasi.png') }}"
+                        alt="Ilustrasi edukasi pengelolaan sampah"
+                        class="education-image"
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+
+                    <div class="education-fallback">
+                        <span>🌎</span>
+                        <h3>Jaga Bumi Kita</h3>
+                        <p>Mulai memilah sampah dari rumah.</p>
+                    </div>
+                </div>
+
+                <div class="education-copy">
+                    <span class="section-label">Learn to care</span>
+
+                    <h2>Bumi yang bersih dimulai dari kebiasaan kecil.</h2>
+
+                    <p>
+                        Mengelola sampah tidak harus dimulai dari hal besar.
+                        Kamu bisa memulainya dengan mengenali kemasan,
+                        mengurangi barang sekali pakai, dan mengikuti
+                        panduan pemilahan lokal.
+                    </p>
+
+                    <div class="education-list">
+
+                        <div class="education-item">
+                            <div class="education-icon">♻️</div>
+                            <div>
+                                <strong>Pilah sebelum membuang</strong>
+                                <p>
+                                    Pisahkan kemasan sesuai jenis dan
+                                    aturan pengumpulan setempat.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="education-item">
+                            <div class="education-icon">🧴</div>
+                            <div>
+                                <strong>Kenali material kemasan</strong>
+                                <p>
+                                    Periksa label bahan karena bentuk
+                                    kemasan tidak selalu menunjukkan
+                                    jenis plastiknya.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="education-item">
+                            <div class="education-icon">🌱</div>
+                            <div>
+                                <strong>Kurangi sampah dari sumbernya</strong>
+                                <p>
+                                    Gunakan barang berulang kali jika
+                                    memungkinkan dan kurangi kemasan
+                                    yang tidak diperlukan.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="{{ url_for('edukasi') }}" class="primary-button">
+                        Buka Pusat Edukasi →
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CARA KERJA -->
+        <section class="section" id="cara-kerja">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">Simple steps</span>
+                        <h2>Mulai dari satu foto.</h2>
+                    </div>
+
+                    <p>
+                        Proses penggunaan EcoScan dibuat sederhana
+                        agar mudah dipahami dan digunakan.
+                    </p>
+                </div>
+
+                <div class="steps-grid">
+
+                    <article class="step-card">
+                        <span class="step-number">STEP 01</span>
+                        <div class="step-icon">📷</div>
+                        <h3>Siapkan Foto</h3>
+                        <p>
+                            Pilih foto kemasan dengan pencahayaan cukup
+                            dan objek yang terlihat jelas.
+                        </p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">STEP 02</span>
+                        <div class="step-icon">🔎</div>
+                        <h3>Kenali Kategori</h3>
+                        <p>
+                            Model pengolahan citra digunakan untuk
+                            memprediksi kategori visual kemasan.
+                        </p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">STEP 03</span>
+                        <div class="step-icon">🌱</div>
+                        <h3>Pelajari Sarannya</h3>
+                        <p>
+                            Baca informasi kategori dan panduan
+                            pemilahan sebelum menangani sampah.
+                        </p>
+                    </article>
+
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="{{ url_for('cara_kerja') }}" class="secondary-button">
+                        Pelajari Cara Kerja →
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AJAKAN -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-inner">
+
+                    <div>
+                        <h2>
+                            Yuk, mulai langkah kecil untuk bumi yang lebih baik.
+                        </h2>
+
+                        <p>
+                            Unggah foto kemasan dan jelajahi fitur
+                            EcoScan untuk belajar memilah sampah.
+                        </p>
+                    </div>
+
+                    <a href="{{ url_for('deteksi') }}" class="cta-button">
+                        Coba EcoScan ↗
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+
+            <div>
+                <div class="footer-brand">♻ EcoScan</div>
+                <p>Project Pengolahan Citra · Kenali, Pilah, Lestarikan.</p>
+            </div>
+
+            <div class="footer-note">
+                Small steps, greener earth 🌱
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>

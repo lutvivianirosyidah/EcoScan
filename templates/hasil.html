@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Deteksi - EcoScan</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f8f3;
+            color: #24352a;
+        }
+
+        header {
+            background: #207a4b;
+            color: white;
+            padding: 22px 8%;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .panel {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 20px #00000010;
+        }
+
+        .gambar-hasil {
+            display: block;
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            margin: 20px auto;
+            border-radius: 12px;
+        }
+
+        .info {
+            background: #e8f5ec;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-wrap: anywhere;
+            text-align: left;
+        }
+
+        .kategori {
+            color: #207a4b;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .confidence {
+            margin-top: 8px;
+            color: #52685a;
+        }
+
+        .catatan {
+            font-size: 13px;
+            color: #647568;
+            line-height: 1.6;
+        }
+
+        .tombol-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .tombol {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #207a4b;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .tombol:hover {
+            background: #185e39;
+        }
+
+        .tombol-pengolahan {
+            background: #e5a52b;
+            color: #263326;
+        }
+
+        .tombol-pengolahan:hover {
+            background: #d39217;
+        }
+
+        @media (max-width: 480px) {
+            main {
+                margin: 20px auto;
+                padding: 12px;
+            }
+
+            .panel {
+                padding: 20px 16px;
+            }
+
+            .tombol-container {
+                flex-direction: column;
+            }
+
+            .tombol {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>♻️ EcoScan</h1>
+        <p>Hasil deteksi jenis sampah</p>
+    </header>
+
+    <main>
+        <div class="panel">
+            <h2>Hasil Deteksi Sampah 🎉</h2>
+
+            <img
+                class="gambar-hasil"
+                src="{{ url_for('static', filename='uploads/' + nama_file) }}"
+                alt="Gambar yang diunggah untuk deteksi"
+            >
+
+            <div class="info">
+                <p>
+                    <strong>Nama file:</strong><br>
+                    {{ nama_asli }}
+                </p>
+
+                <p><strong>Kategori sampah:</strong></p>
+
+                <div class="kategori">
+                    {{ kategori.replace('_', ' ') }}
+                </div>
+
+                <p class="confidence">
+                    <strong>Persentase prediksi:</strong>
+                    {{ confidence }}%
+                </p>
+            </div>
+
+            <p>
+                AI EcoScan telah memproses gambar yang kamu unggah
+                dan memberikan prediksi kategori sampah.
+            </p>
+
+            <p class="catatan">
+                Catatan: persentase merupakan tingkat keyakinan model,
+                bukan jaminan bahwa klasifikasi benar. Hasil dapat
+                kurang akurat karena jumlah data pelatihan masih terbatas.
+            </p>
+
+            <div class="tombol-container">
+                <a
+                    class="tombol tombol-pengolahan"
+                    href="{{ url_for('pengolahan', kategori=kategori) }}"
+                >
+                    ♻️ Lihat Saran Pengolahan Limbah
+                </a>
+
+                <a
+                    class="tombol"
+                    href="{{ url_for('deteksi') }}"
+                >
+                    📷 Deteksi Lagi
+                </a>
+
+                <a
+                    class="tombol"
+                    href="{{ url_for('index') }}"
+                >
+                    🏠 Kembali ke Beranda
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
