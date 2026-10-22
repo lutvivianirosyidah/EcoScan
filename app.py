@@ -14,7 +14,7 @@ app = Flask(__name__)
 # PENGATURAN APLIKASI
 # =========================
 UPLOAD_FOLDER = os.path.join("static", "uploads")
-MODEL_PATH = os.path.join("model", "ecoscan_model.keras")
+MODEL_PATH = os.path.join("model", "ecoscan_model_baru.keras")
 CLASS_NAMES_PATH = os.path.join("model", "class_names.json")
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}

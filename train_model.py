@@ -82,7 +82,7 @@ model.fit(
 )
 
 # Simpan model terbaru
-model.save(os.path.join(MODEL_DIR, "ecoscan_model.keras"))
+model.save(os.path.join(MODEL_DIR, "ecoscan_model_baru.keras"))
 
 print("Model AI EcoScan berhasil dilatih!")
 print("Kategori:", class_names)
