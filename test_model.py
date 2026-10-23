@@ -5,8 +5,10 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 
-MODEL_PATH = os.path.join("model", "ecoscan_model_baru.keras")
-CLASS_NAMES_PATH = os.path.join("model", "class_names.json")
+
+MODEL_PATH = os.path.join("model", "ecoscan_model_14kelas_uji.keras")
+CLASS_NAMES_PATH = os.path.join("model", "class_names_14kelas_uji.json")
+
 
 model = tf.keras.models.load_model(MODEL_PATH)
 

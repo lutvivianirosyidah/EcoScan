@@ -3,206 +3,1058 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Deteksi - EcoScan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#faf9f4">
+    <meta name="description" content="Hasil deteksi kategori sampah dan panduan pengelolaan EcoScan.">
+    <title>Hasil Deteksi — EcoScan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --green: #286747;
+            --dark-green: #193f2c;
+            --light-green: #e8efe4;
+            --cream: #faf9f4;
+            --text: #26372c;
+            --muted: #788078;
+            --border: #e5e9df;
+            --white: #ffffff;
+            --gold: #e8b85c;
+            --warning: #a45a32;
+            --warning-bg: #fff4e9;
+            --warning-border: #f0d8c5;
+        }
+
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f1f8f3;
-            color: #24352a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background:
+                radial-gradient(ellipse at 5% 12%, rgba(217, 231, 208, .4), transparent 28%),
+                radial-gradient(ellipse at 96% 65%, rgba(232, 239, 228, .65), transparent 30%),
+                var(--cream);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
         }
 
-        header {
-            background: #207a4b;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, 91%);
+            margin: 0 auto;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(250, 249, 244, .93);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(16px);
+        }
+
+        .nav-content {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Manrope", sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -.7px;
+        }
+
+        .brand-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: var(--green);
             color: white;
-            padding: 22px 8%;
+            font-size: 24px;
+            box-shadow: 0 6px 15px rgba(40, 103, 71, .15);
         }
 
-        header h1 {
-            margin: 0;
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 17px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: white;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+            transition: .2s;
         }
 
-        header p {
-            margin-bottom: 0;
+        .back-link:hover {
+            border-color: #c4d6c0;
+            background: var(--light-green);
+            transform: translateY(-1px);
         }
+
+        /* PAGE HEADER */
+
+        .page-heading {
+            padding: 42px 0 25px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 15px;
+            border: 1px solid #dce7d7;
+            border-radius: 30px;
+            background: rgba(232, 239, 228, .8);
+            color: var(--green);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #69a878;
+            box-shadow: 0 0 0 4px rgba(105, 168, 120, .13);
+        }
+
+        .page-heading h1 {
+            margin: 17px 0 10px;
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(31px, 4vw, 45px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.2;
+        }
+
+        .page-heading h1 span {
+            color: var(--green);
+        }
+
+        .page-heading p {
+            max-width: 570px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* RESULT CARD */
 
         main {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 20px;
+            flex: 1;
+            padding-bottom: 65px;
         }
 
-        .panel {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 5px 20px #00000010;
+        .result-card {
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: .95fr 1.05fr;
+            border: 1px solid var(--border);
+            border-radius: 27px;
+            background: var(--white);
+            box-shadow: 0 22px 65px rgba(25, 63, 44, .08);
+        }
+
+        /* IMAGE SIDE */
+
+        .image-side {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            padding: 27px;
+            background: #f3f6ef;
+            border-right: 1px solid var(--border);
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 17px;
+            color: #687568;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .image-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 10px;
+            border-radius: 20px;
+            background: #e3ecdc;
+            color: var(--green);
+            font-size: 9px;
+            letter-spacing: 0;
+            white-space: nowrap;
+        }
+
+        .image-frame {
+            min-height: 310px;
+            display: grid;
+            place-items: center;
+            padding: 15px;
+            border: 1px solid #e0e6da;
+            border-radius: 20px;
+            background:
+                linear-gradient(45deg, #f7f9f4 25%, transparent 25%),
+                linear-gradient(-45deg, #f7f9f4 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f7f9f4 75%),
+                linear-gradient(-45deg, transparent 75%, #f7f9f4 75%),
+                #ffffff;
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0;
         }
 
         .gambar-hasil {
             display: block;
-            max-width: 100%;
-            max-height: 350px;
+            width: 100%;
+            max-height: 390px;
             object-fit: contain;
-            margin: 20px auto;
             border-radius: 12px;
         }
 
-        .info {
-            background: #e8f5ec;
+        .file-details {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 17px;
             padding: 15px;
-            border-radius: 10px;
-            overflow-wrap: anywhere;
-            text-align: left;
+            border: 1px solid #e1e8dc;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, .75);
         }
 
-        .kategori {
-            color: #207a4b;
-            font-size: 24px;
-            font-weight: bold;
+        .file-icon {
+            width: 37px;
+            height: 37px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border-radius: 11px;
+            background: var(--light-green);
+            font-size: 17px;
+        }
+
+        .file-label {
+            margin-bottom: 5px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .file-name {
+            color: var(--text);
+            font-size: 12px;
+            font-weight: 800;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        /* INFORMATION SIDE */
+
+        .info-side {
+            min-width: 0;
+            padding: 32px;
+        }
+
+        .status-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .status-success {
+            background: #edf6e9;
+            color: var(--green);
+        }
+
+        .status-unknown {
+            background: var(--warning-bg);
+            color: var(--warning);
+        }
+
+        .status-icon {
+            display: grid;
+            place-items: center;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            background: var(--green);
+            color: white;
+            font-size: 11px;
+        }
+
+        .status-unknown .status-icon {
+            background: var(--warning);
+        }
+
+        .info-side h2 {
+            margin-top: 20px;
+            font-family: "Manrope", sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -.8px;
+            line-height: 1.35;
+        }
+
+        .description {
+            margin-top: 9px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        /* CATEGORY */
+
+        .category-box {
+            margin-top: 23px;
+            padding: 22px;
+            border: 1px solid #dce8d7;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f3f8ef, #eaf2e5);
+        }
+
+        .category-label {
+            color: #637765;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .category-main {
+            margin-top: 12px;
+            color: var(--dark-green);
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(24px, 3vw, 34px);
+            font-weight: 800;
+            line-height: 1.2;
+            overflow-wrap: anywhere;
             text-transform: capitalize;
         }
 
-        .confidence {
-            margin-top: 8px;
-            color: #52685a;
+        .category-subtitle {
+            margin-top: 9px;
+            color: #637765;
+            font-size: 11px;
+            line-height: 1.8;
         }
 
-        .catatan {
-            font-size: 13px;
-            color: #647568;
-            line-height: 1.6;
+        /* UNKNOWN RESULT */
+
+        .unknown-box {
+            margin-top: 23px;
+            padding: 24px;
+            border: 1px solid var(--warning-border);
+            border-radius: 20px;
+            background: linear-gradient(135deg, #fff9f2, #fff1e5);
         }
 
-        .tombol-container {
+        .unknown-symbol {
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 17px;
+            border-radius: 16px;
+            background: #f9e4d2;
+            color: var(--warning);
+            font-size: 26px;
+        }
+
+        .unknown-title {
+            color: #78452c;
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(21px, 3vw, 27px);
+            font-weight: 800;
+            line-height: 1.4;
+        }
+
+        .unknown-box p {
+            margin-top: 12px;
+            color: #796454;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .unknown-tip {
+            margin-top: 17px;
+            padding: 14px;
+            border: 1px solid #f0ddca;
+            border-radius: 13px;
+            background: rgba(255, 255, 255, .7);
+            color: #785c48;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* CONFIDENCE */
+
+        .confidence-box {
+            margin-top: 17px;
+            padding: 19px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: #fff;
+        }
+
+        .confidence-top {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 13px;
+        }
+
+        .confidence-label {
+            color: #657166;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .confidence-value {
+            color: var(--green);
+            font-family: "Manrope", sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .progress-track {
+            height: 8px;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #edf0e9;
+        }
+
+        .progress-fill {
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #76a878, #286747);
+            transition: width .8s ease;
+        }
+
+        .confidence-note {
+            margin-top: 11px;
+            color: #858d82;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        /* NOTE AKURASI */
+
+        .note {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 17px;
+            padding: 14px;
+            border: 1px solid #f0e5c9;
+            border-radius: 14px;
+            background: #fffaf0;
+        }
+
+        .note-icon {
+            flex-shrink: 0;
+            font-size: 17px;
+        }
+
+        .note p {
+            color: #796b4f;
+            font-size: 10px;
+            line-height: 1.9;
+        }
+
+        /* INFORMASI DAUR ULANG */
+
+        .info-pengelolaan {
+            display: flex;
+            align-items: flex-start;
             gap: 12px;
-            margin-top: 24px;
+            margin-top: 16px;
+            padding: 17px;
+            border: 1px solid #dce7d7;
+            border-radius: 16px;
+            background: #f1f6ed;
         }
 
-        .tombol {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #207a4b;
+        .info-pengelolaan-icon {
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 11px;
+            background: #dfeada;
+            font-size: 18px;
+        }
+
+        .info-pengelolaan h3 {
+            margin: 0 0 5px;
+            color: var(--dark-green);
+            font-family: "Manrope", sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            line-height: 1.5;
+        }
+
+        .info-pengelolaan p {
+            color: #596b5d;
+            font-size: 11px;
+            line-height: 1.9;
+        }
+
+        /* ACTIONS */
+
+        .actions {
+            display: grid;
+            gap: 10px;
+            margin-top: 23px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 47px;
+            padding: 12px 16px;
+            border: 1px solid transparent;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 800;
+            text-align: center;
+            transition: transform .2s, background .2s, box-shadow .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: var(--green);
             color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: background 0.2s;
+            box-shadow: 0 7px 17px rgba(40, 103, 71, .15);
         }
 
-        .tombol:hover {
-            background: #185e39;
+        .button-primary:hover {
+            background: var(--dark-green);
+            box-shadow: 0 10px 22px rgba(25, 63, 44, .18);
         }
 
-        .tombol-pengolahan {
-            background: #e5a52b;
-            color: #263326;
+        .button-secondary {
+            border-color: #dfe7da;
+            background: #f8faf6;
+            color: var(--green);
         }
 
-        .tombol-pengolahan:hover {
-            background: #d39217;
+        .button-secondary:hover {
+            background: var(--light-green);
+        }
+
+        .button-home {
+            border-color: var(--border);
+            background: white;
+            color: #647064;
+        }
+
+        .button-home:hover {
+            background: #f7f8f4;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 23px 0;
+            border-top: 1px solid var(--border);
+            background: rgba(244, 245, 238, .8);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            font-family: "Manrope", sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .footer-content p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .footer-note {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+            .result-card {
+                grid-template-columns: 1fr;
+            }
+
+            .image-side {
+                border-right: 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .image-frame {
+                min-height: 250px;
+            }
+
+            .gambar-hasil {
+                max-height: 350px;
+            }
+
+            .info-side {
+                padding: 27px;
+            }
         }
 
         @media (max-width: 480px) {
+            .container {
+                width: 91%;
+            }
+
+            .nav-content {
+                min-height: 67px;
+            }
+
+            .brand {
+                gap: 7px;
+                font-size: 21px;
+            }
+
+            .brand-icon {
+                width: 38px;
+                height: 38px;
+                border-radius: 12px;
+                font-size: 21px;
+            }
+
+            .back-link {
+                gap: 5px;
+                padding: 10px 12px;
+                font-size: 10px;
+            }
+
+            .page-heading {
+                padding: 31px 0 20px;
+            }
+
+            .page-heading h1 {
+                font-size: 32px;
+                letter-spacing: -1px;
+            }
+
+            .page-heading p {
+                font-size: 12px;
+            }
+
             main {
-                margin: 20px auto;
-                padding: 12px;
+                padding-bottom: 40px;
             }
 
-            .panel {
-                padding: 20px 16px;
+            .image-side,
+            .info-side {
+                padding: 19px;
             }
 
-            .tombol-container {
+            .image-frame {
+                min-height: 210px;
+                padding: 10px;
+            }
+
+            .gambar-hasil {
+                max-height: 290px;
+            }
+
+            .info-side h2 {
+                font-size: 22px;
+            }
+
+            .category-box,
+            .unknown-box {
+                padding: 18px;
+            }
+
+            .category-main {
+                font-size: 27px;
+            }
+
+            .footer-content {
                 flex-direction: column;
+                align-items: flex-start;
             }
+        }
 
-            .tombol {
-                width: 100%;
-                text-align: center;
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>♻️ EcoScan</h1>
-        <p>Hasil deteksi jenis sampah</p>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="{{ url_for('index') }}" class="brand">
+                <span class="brand-icon">♻</span>
+                <span>EcoScan</span>
+            </a>
+
+            <a href="{{ url_for('deteksi') }}" class="back-link">
+                <span>←</span> Kembali ke Deteksi
+            </a>
+        </div>
     </header>
 
-    <main>
-        <div class="panel">
-            <h2>Hasil Deteksi Sampah 🎉</h2>
+    <!-- PAGE HEADING -->
+    <section class="page-heading container">
+        <span class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            EcoScan Image Lab
+        </span>
 
-            <img
-                class="gambar-hasil"
-                src="{{ url_for('static', filename='uploads/' + nama_file) }}"
-                alt="Gambar yang diunggah untuk deteksi"
-            >
+        <h1>Hasil <span>Deteksi Sampah</span></h1>
 
-            <div class="info">
-                <p>
-                    <strong>Nama file:</strong><br>
-                    {{ nama_asli }}
-                </p>
+        <p>
+            Berikut hasil analisis gambar yang kamu unggah.
+            Periksa informasi ini sebelum menentukan langkah pengelolaan sampah.
+        </p>
+    </section>
 
-                <p><strong>Kategori sampah:</strong></p>
+    <!-- RESULT -->
+    <main class="container">
+        <section class="result-card">
 
-                <div class="kategori">
-                    {{ kategori.replace('_', ' ') }}
+            <!-- IMAGE -->
+            <div class="image-side">
+                <div class="section-label">
+                    <span>Gambar yang dianalisis</span>
+                    <span class="image-badge">🖼 Pratinjau</span>
                 </div>
 
-                <p class="confidence">
-                    <strong>Persentase prediksi:</strong>
-                    {{ confidence }}%
-                </p>
+                <div class="image-frame">
+                    <img
+                        class="gambar-hasil"
+                        src="{{ url_for('static', filename='uploads/' + nama_file) }}"
+                        alt="Gambar yang diunggah untuk deteksi"
+                    >
+                </div>
+
+                <div class="file-details">
+                    <span class="file-icon">📄</span>
+                    <div>
+                        <p class="file-label">Nama file</p>
+                        <p class="file-name">{{ nama_asli }}</p>
+                    </div>
+                </div>
             </div>
 
-            <p>
-                AI EcoScan telah memproses gambar yang kamu unggah
-                dan memberikan prediksi kategori sampah.
-            </p>
+            <!-- INFORMATION -->
+            <div class="info-side">
 
-            <p class="catatan">
-                Catatan: persentase merupakan tingkat keyakinan model,
-                bukan jaminan bahwa klasifikasi benar. Hasil dapat
-                kurang akurat karena jumlah data pelatihan masih terbatas.
-            </p>
+                {% if dikenali %}
 
-            <div class="tombol-container">
-                <a
-                    class="tombol tombol-pengolahan"
-                    href="{{ url_for('pengolahan', kategori=kategori) }}"
-                >
-                    ♻️ Lihat Saran Pengolahan Limbah
-                </a>
+                    <!-- HASIL DIKENALI -->
+                    <span class="status-label status-success">
+                        <span class="status-icon">✓</span>
+                        Prediksi kategori tersedia
+                    </span>
 
-                <a
-                    class="tombol"
-                    href="{{ url_for('deteksi') }}"
-                >
-                    📷 Deteksi Lagi
-                </a>
+                    <h2>Ini hasil pengenalan sampahmu.</h2>
 
-                <a
-                    class="tombol"
-                    href="{{ url_for('index') }}"
-                >
-                    🏠 Kembali ke Beranda
-                </a>
+                    <p class="description">
+                        EcoScan telah memproses gambar dan menemukan
+                        kategori yang diprediksi oleh model klasifikasi.
+                    </p>
+
+                    <div class="category-box">
+                        <p class="category-label">Kategori prediksi</p>
+
+                        <div class="category-main">
+                            {{ kategori.replace('_', ' ') }}
+                        </div>
+
+                        <p class="category-subtitle">
+                            Gunakan kategori ini sebagai panduan awal
+                            untuk mengenali jenis sampah. Hasil prediksi
+                            tetap perlu diperiksa kembali.
+                        </p>
+                    </div>
+
+                    <!-- CONFIDENCE -->
+                    <div class="confidence-box">
+                        <div class="confidence-top">
+                            <span class="confidence-label">
+                                Tingkat keyakinan model
+                            </span>
+
+                            <span class="confidence-value" id="confidenceValue">
+                                {{ confidence }}%
+                            </span>
+                        </div>
+
+                        <div
+                            class="progress-track"
+                            role="progressbar"
+                            aria-label="Tingkat keyakinan model"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="{{ confidence }}"
+                        >
+                            <div class="progress-fill" id="confidenceBar"></div>
+                        </div>
+
+                        <p class="confidence-note">
+                            Persentase ini menunjukkan nilai keluaran
+                            keyakinan model, bukan jaminan bahwa prediksi
+                            tersebut benar.
+                        </p>
+                    </div>
+
+                    <div class="note">
+                        <span class="note-icon">💡</span>
+                        <p>
+                            <strong>Perlu diingat:</strong> hasil dapat keliru
+                            jika foto buram, objek tertutup, atau jenis sampah
+                            belum terwakili dengan baik dalam dataset.
+                        </p>
+                    </div>
+
+                    <div class="info-pengelolaan">
+                        <span class="info-pengelolaan-icon">🌱</span>
+
+                        <div>
+                            <h3>Tidak Semua Sampah Bisa Didaur Ulang</h3>
+
+                            <p>
+                                Cara pengelolaan sampah bergantung pada jenis
+                                material dan kondisinya. Bersihkan kemasan
+                                yang sesuai untuk didaur ulang dan pisahkan
+                                berdasarkan jenis material jika memungkinkan.
+                                Sampah tertentu memerlukan penanganan khusus.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <a
+                            class="button button-primary"
+                            href="{{ url_for('pengolahan', kategori=kategori) }}"
+                        >
+                            ♻ Lihat Saran Pengolahan Limbah <span>→</span>
+                        </a>
+
+                        <a
+                            class="button button-secondary"
+                            href="{{ url_for('deteksi') }}"
+                        >
+                            📷 Deteksi Gambar Lain
+                        </a>
+
+                        <a
+                            class="button button-home"
+                            href="{{ url_for('index') }}"
+                        >
+                            ← Kembali ke Beranda
+                        </a>
+                    </div>
+
+                {% else %}
+
+                    <!-- HASIL BELUM DIKENALI -->
+                    <span class="status-label status-unknown">
+                        <span class="status-icon">!</span>
+                        Kategori belum dikenali
+                    </span>
+
+                    <h2>Gambar sudah diproses.</h2>
+
+                    <p class="description">
+                        Namun, EcoScan belum dapat memastikan kategori
+                        sampah dari gambar yang kamu unggah.
+                    </p>
+
+                    <div class="unknown-box">
+                        <div class="unknown-symbol">🔎</div>
+
+                        <h3 class="unknown-title">
+                            Sampah Belum Dikenali
+                        </h3>
+
+                        <p>
+                            Maaf, EcoScan belum dapat mengidentifikasi jenis
+                            sampah ini. Kemungkinan objek belum tercakup dalam
+                            dataset pelatihan atau belum tersedia dalam kategori
+                            klasifikasi yang didukung.
+                        </p>
+
+                        <p>
+                            Silakan coba unggah gambar yang lebih jelas atau
+                            laporkan jenis sampah ini untuk membantu
+                            pengembangan EcoScan.
+                        </p>
+
+                        <div class="unknown-tip">
+                            <strong>Tips:</strong> gunakan pencahayaan yang
+                            cukup, tampilkan objek secara utuh, dan hindari
+                            latar belakang yang terlalu ramai.
+                        </div>
+                    </div>
+
+                    <div class="confidence-box">
+                        <div class="confidence-top">
+                            <span class="confidence-label">
+                                Nilai keyakinan prediksi
+                            </span>
+
+                            <span class="confidence-value" id="confidenceValue">
+                                {{ confidence }}%
+                            </span>
+                        </div>
+
+                        <div
+                            class="progress-track"
+                            role="progressbar"
+                            aria-label="Nilai keyakinan prediksi"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="{{ confidence }}"
+                        >
+                            <div class="progress-fill" id="confidenceBar"></div>
+                        </div>
+
+                        <p class="confidence-note">
+                            Nilai ini berada di bawah batas penerimaan
+                            yang digunakan EcoScan. Ini tidak memastikan
+                            bahwa objek tersebut bukan sampah.
+                        </p>
+                    </div>
+
+                    <div class="actions">
+                        <a
+                            class="button button-primary"
+                            href="{{ url_for('deteksi') }}"
+                        >
+                            📷 Coba Gambar Lain <span>→</span>
+                        </a>
+
+                        <a
+                            class="button button-secondary"
+                            href="{{ url_for('kategori') }}"
+                        >
+                            ♻ Lihat Kategori yang Didukung
+                        </a>
+
+                        <a
+                            class="button button-home"
+                            href="{{ url_for('index') }}"
+                        >
+                            ← Kembali ke Beranda
+                        </a>
+                    </div>
+
+                {% endif %}
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <div class="footer-brand">♻ EcoScan</div>
+                <p>Pengolahan Citra · Kenali, Pilah, Lestarikan.</p>
+            </div>
+
+            <div class="footer-note">
+                Small steps, greener earth 🌱
             </div>
         </div>
-    </main>
+    </footer>
+
+    <script>
+        const confidenceValue = document.getElementById("confidenceValue");
+        const confidenceBar = document.getElementById("confidenceBar");
+        const progressTrack = document.querySelector(".progress-track");
+
+        if (confidenceValue && confidenceBar && progressTrack) {
+            const rawConfidence = parseFloat(
+                confidenceValue.textContent.replace("%", "").trim()
+            );
+
+            if (Number.isFinite(rawConfidence)) {
+                const safeConfidence = Math.min(
+                    100,
+                    Math.max(0, rawConfidence)
+                );
+
+                confidenceBar.style.width = safeConfidence + "%";
+                progressTrack.setAttribute(
+                    "aria-valuenow",
+                    safeConfidence
+                );
+            } else {
+                confidenceBar.style.width = "0%";
+                progressTrack.setAttribute("aria-valuenow", "0");
+            }
+        }
+    </script>
+
 </body>
 </html>

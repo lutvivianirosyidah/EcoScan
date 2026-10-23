@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cara Kerja — EcoScan</title>
+    <meta name="theme-color" content="#faf9f4">
+    <title>Cara Kerja | EcoScan</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -28,13 +31,14 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 110px;
+            scroll-padding-top: 100px;
         }
 
         body {
+            font-family: "DM Sans", sans-serif;
             background: var(--cream);
             color: var(--text);
-            font-family: "DM Sans", sans-serif;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
@@ -43,83 +47,120 @@
             text-decoration: none;
         }
 
-        
-.container {
-    width: min(1680px, 92%);
-    margin: 0 auto;
-}
+        img {
+            display: block;
+            max-width: 100%;
+        }
 
-.nav-content {
-    min-height: 120px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 25px;
-}
+        .container {
+            width: min(1240px, 92%);
+            margin: 0 auto;
+        }
 
-.brand {
-    display: inline-flex;
-    align-items: center;
-    justify-self: start;
-    gap: 13px;
-    font-family: "Manrope", sans-serif;
-    font-size: 35px;
-    font-weight: 800;
-    white-space: nowrap;
-}
+        /* =========================
+           NAVBAR - SAMA DENGAN BERANDA
+        ========================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 249, 244, .96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(14px);
+        }
 
-.brand-icon {
-    width: 65px;
-    height: 65px;
-    display: grid;
-    place-items: center;
-    border-radius: 20px;
-    background: var(--green);
-    color: white;
-    font-size: 35px;
-    flex-shrink: 0;
-}
+        .nav-content {
+            min-height: 84px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 24px;
+        }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-}
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Manrope", sans-serif;
+            font-size: 27px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
 
-.nav-links a {
-    color: #59665b;
-    font-size: 17px;
-    font-weight: 700;
-    white-space: nowrap;
-    transition: color 0.2s;
-}
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: var(--green);
+            color: white;
+            font-size: 27px;
+        }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--green);
-}
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
 
-.nav-button {
-    justify-self: end;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 62px;
-    padding: 0 25px;
-    border-radius: 40px;
-    background: var(--green);
-    color: white;
-    font-size: 16px;
-    font-weight: 800;
-    white-space: nowrap;
-    transition: background 0.2s, transform 0.2s;
-}
+        .nav-links a {
+            color: #59665b;
+            font-size: 14px;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: color .2s;
+        }
 
-        /* HEADER */
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--green);
+        }
 
+        .nav-button,
+        .button,
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: .25s;
+            cursor: pointer;
+        }
+
+        .nav-button {
+            justify-self: end;
+            min-height: 47px;
+            padding: 0 21px;
+            background: var(--green);
+            color: white;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .nav-button:hover,
+        .button-primary:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        a:focus-visible {
+            outline: 3px solid #91b996;
+            outline-offset: 4px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
         .page-hero {
-            padding: 75px 0 50px;
+            position: relative;
+            overflow: hidden;
+            padding: 75px 0 60px;
+            background:
+                radial-gradient(circle at 8% 15%, #edf2e7, transparent 34%),
+                var(--cream);
             text-align: center;
         }
 
@@ -127,24 +168,25 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 11px 17px;
+            padding: 8px 15px;
             border-radius: 30px;
             background: var(--light-green);
             color: var(--green);
             font-size: 12px;
             font-weight: 800;
-            letter-spacing: 1.1px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .page-hero h1 {
-            max-width: 900px;
+            max-width: 800px;
             margin: 22px auto 18px;
+            color: var(--dark-green);
             font-family: "Manrope", sans-serif;
-            font-size: clamp(38px, 5vw, 62px);
+            font-size: clamp(35px, 5vw, 54px);
             font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -2px;
+            line-height: 1.2;
+            letter-spacing: -1.5px;
         }
 
         .page-hero h1 span {
@@ -152,23 +194,103 @@
         }
 
         .page-description {
-            max-width: 700px;
+            max-width: 690px;
             margin: 0 auto;
             color: var(--muted);
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.9;
         }
 
-        /* LANGKAH-LANGKAH */
-
-        .timeline {
-            width: min(1000px, 100%);
-            margin: 0 auto;
-            padding: 15px 0 80px;
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
         }
 
+        .button {
+            gap: 9px;
+            padding: 12px 21px;
+            font-size: 14px;
+        }
+
+        .button-primary {
+            background: var(--green);
+            color: white;
+        }
+
+        .button-secondary {
+            border: 1px solid #d6dfd2;
+            background: white;
+            color: var(--green);
+        }
+
+        .button-secondary:hover {
+            background: var(--light-green);
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           RINGKASAN PROSES
+        ========================= */
+        .overview {
+            padding: 0 0 60px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .overview-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 23px;
+            border: 1px solid var(--border);
+            border-radius: 19px;
+            background: white;
+            transition: .25s;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(25, 63, 44, .06);
+        }
+
+        .overview-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: var(--light-green);
+            font-size: 24px;
+        }
+
+        .overview-card h3 {
+            margin-bottom: 5px;
+            color: var(--dark-green);
+            font-family: "Manrope", sans-serif;
+            font-size: 15px;
+        }
+
+        .overview-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           JUDUL SECTION
+        ========================= */
         .section-heading {
-            margin-bottom: 30px;
+            max-width: 660px;
+            margin-bottom: 35px;
         }
 
         .section-label {
@@ -180,59 +302,117 @@
         }
 
         .section-heading h2 {
-            margin-top: 10px;
+            margin: 10px 0;
+            color: var(--dark-green);
             font-family: "Manrope", sans-serif;
-            font-size: clamp(28px, 3vw, 38px);
-            letter-spacing: -1px;
+            font-size: clamp(27px, 3.5vw, 36px);
+            letter-spacing: -.8px;
+            line-height: 1.3;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           ALUR LANGKAH
+        ========================= */
+        .process-section {
+            padding: 70px 0 78px;
+            background: white;
+        }
+
+        .timeline {
+            position: relative;
+            display: grid;
+            gap: 22px;
         }
 
         .step {
+            position: relative;
             display: grid;
-            grid-template-columns: 100px minmax(0, 1fr);
-            gap: 22px;
+            grid-template-columns: 76px minmax(0, 1fr);
+            gap: 20px;
             align-items: stretch;
-            margin-bottom: 20px;
+        }
+
+        .step-number-wrap {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .step:not(:last-child) .step-number-wrap::after {
+            content: "";
+            position: absolute;
+            top: 75px;
+            bottom: -24px;
+            left: 50%;
+            width: 2px;
+            background: #dce8d9;
+            transform: translateX(-50%);
         }
 
         .step-number {
+            position: relative;
+            z-index: 1;
+            width: 62px;
+            height: 62px;
             display: grid;
             place-items: center;
-            min-height: 160px;
-            border-radius: 22px;
-            background: #dce9d9;
-            color: var(--green);
+            border: 5px solid var(--light-green);
+            border-radius: 20px;
+            background: var(--green);
+            color: white;
             font-family: "Manrope", sans-serif;
-            font-size: 32px;
+            font-size: 18px;
             font-weight: 800;
         }
 
         .step-content {
-            padding: 27px 30px;
+            padding: 25px 28px;
             border: 1px solid var(--border);
-            border-radius: 22px;
-            background: var(--white);
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 20px;
+            background: var(--cream);
+            transition: transform .25s, box-shadow .25s;
         }
 
         .step-content:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(25, 63, 44, 0.06);
+            box-shadow: 0 12px 28px rgba(25, 63, 44, .07);
+        }
+
+        .step-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .step-label {
-            display: inline-block;
-            margin-bottom: 10px;
             color: var(--green);
             font-size: 11px;
             font-weight: 800;
             letter-spacing: 1.2px;
         }
 
-        .step-content h2 {
-            margin-bottom: 10px;
+        .step-tag {
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: var(--light-green);
+            color: var(--green);
+            font-size: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .step-content h3 {
+            margin-bottom: 9px;
+            color: var(--dark-green);
             font-family: "Manrope", sans-serif;
-            font-size: 23px;
-            font-weight: 800;
+            font-size: 20px;
             line-height: 1.4;
         }
 
@@ -242,64 +422,139 @@
             line-height: 1.9;
         }
 
-        /* AJAKAN DETEKSI */
-
-        .info-section {
-            padding: 0 0 85px;
-        }
-
-        .info-inner {
+        .step-detail {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 35px;
-            padding: 45px;
-            border-radius: 27px;
-            background: var(--dark-green);
-            color: white;
+            align-items: flex-start;
+            gap: 9px;
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: white;
+            color: #536659;
+            font-size: 12px;
+            line-height: 1.7;
         }
 
-        .info-copy {
-            max-width: 760px;
+        .detail-icon {
+            flex-shrink: 0;
+            color: var(--green);
         }
 
-        .info-copy h2 {
+        /* =========================
+           CATATAN
+        ========================= */
+        .note-section {
+            padding: 65px 0;
+        }
+
+        .note-box {
+            display: grid;
+            grid-template-columns: 58px minmax(0, 1fr);
+            gap: 20px;
+            padding: 28px;
+            border: 1px solid #d9e5d5;
+            border-radius: 22px;
+            background: var(--light-green);
+        }
+
+        .note-icon {
+            width: 55px;
+            height: 55px;
+            display: grid;
+            place-items: center;
+            border-radius: 17px;
+            background: white;
+            font-size: 27px;
+        }
+
+        .note-box h3 {
+            margin-bottom: 8px;
+            color: var(--dark-green);
             font-family: "Manrope", sans-serif;
-            font-size: clamp(26px, 3vw, 38px);
-            line-height: 1.35;
+            font-size: 19px;
         }
 
-        .info-copy p {
-            margin-top: 13px;
-            color: #d1dfd2;
+        .note-box p {
+            color: #5d6c60;
             font-size: 14px;
             line-height: 1.9;
         }
 
-        .primary-button {
-            flex-shrink: 0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 17px 25px;
-            border-radius: 40px;
+        /* =========================
+           CTA
+        ========================= */
+        .cta-section {
+            padding: 0 0 78px;
+        }
+
+        .cta-box {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 48px 30px;
+            border-radius: 27px;
+            background: var(--dark-green);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-box::before,
+        .cta-box::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-box::before {
+            top: -95px;
+            left: -55px;
+            width: 190px;
+            height: 190px;
+        }
+
+        .cta-box::after {
+            right: -65px;
+            bottom: -125px;
+            width: 250px;
+            height: 250px;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 12px;
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(25px, 3.5vw, 35px);
+            line-height: 1.35;
+        }
+
+        .cta-box p {
+            max-width: 600px;
+            margin: 0 auto 24px;
+            color: #d5e3d6;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .cta-button {
+            padding: 13px 22px;
             background: white;
             color: var(--dark-green);
             font-size: 14px;
             font-weight: 800;
-            white-space: nowrap;
-            transition: transform 0.2s, background 0.2s;
         }
 
-        .primary-button:hover {
-            transform: translateY(-2px);
+        .cta-button:hover {
             background: var(--light-green);
+            transform: translateY(-2px);
         }
 
-        /* FOOTER */
-
+        /* =========================
+           FOOTER - SAMA DENGAN BERANDA
+        ========================= */
         footer {
-            padding: 30px 0;
+            padding: 27px 0;
             border-top: 1px solid var(--border);
         }
 
@@ -313,70 +568,36 @@
 
         .footer-brand {
             font-family: "Manrope", sans-serif;
-            font-size: 22px;
+            font-size: 19px;
             font-weight: 800;
+        }
+
+        .footer-content p,
+        .footer-note {
+            color: var(--muted);
+            font-size: 11px;
         }
 
         .footer-content p {
             margin-top: 5px;
-            color: var(--muted);
-            font-size: 12px;
         }
 
-        .footer-note {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        /* RESPONSIVE TABLET */
-
-        @media (max-width: 1250px) {
-            .nav-content {
-                min-height: 120px;
-                gap: 20px;
-            }
-
-            .brand {
-                gap: 13px;
-                font-size: 35px;
-            }
-
-            .brand-icon {
-                width: 65px;
-                height: 65px;
-                border-radius: 20px;
-                font-size: 35px;
-            }
-
-            .nav-links {
-                gap: 25px;
-            }
-
-            .nav-links a {
-                font-size: 17px;
-            }
-
-            .nav-button {
-                min-height: 62px;
-                padding: 0 25px;
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 950px) {
+        /* =========================
+           RESPONSIVE TABLET
+        ========================= */
+        @media (max-width: 1000px) {
             .nav-content {
                 grid-template-columns: 1fr auto;
-                padding: 18px 0;
-                row-gap: 20px;
+                padding: 13px 0;
+                row-gap: 15px;
             }
 
             .nav-links {
                 grid-column: 1 / -1;
                 grid-row: 2;
-                justify-content: center;
                 flex-wrap: wrap;
-                gap: 24px;
-                padding-bottom: 5px;
+                gap: 20px;
+                padding-bottom: 4px;
             }
 
             .nav-button {
@@ -384,40 +605,43 @@
                 grid-row: 1;
             }
 
-            .info-inner {
-                align-items: flex-start;
-                flex-direction: column;
-                padding: 35px;
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-card {
+                padding: 20px;
             }
         }
 
-        /* RESPONSIVE HP */
-
-        @media (max-width: 600px) {
+        /* =========================
+           RESPONSIVE HP
+        ========================= */
+        @media (max-width: 650px) {
             .container {
                 width: 90%;
             }
 
             .nav-content {
-                gap: 14px;
+                gap: 12px;
             }
 
             .brand {
-                gap: 9px;
-                font-size: 24px;
+                font-size: 22px;
+                gap: 8px;
             }
 
             .brand-icon {
-                width: 44px;
-                height: 44px;
-                border-radius: 13px;
-                font-size: 25px;
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+                font-size: 23px;
             }
 
             .nav-button {
-                min-height: 42px;
-                padding: 0 13px;
-                font-size: 11px;
+                min-height: 39px;
+                padding: 0 12px;
+                font-size: 10px;
             }
 
             .nav-links {
@@ -425,37 +649,61 @@
             }
 
             .nav-links a {
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .page-hero {
-                padding: 45px 0 35px;
+                padding: 48px 0 40px;
                 text-align: left;
             }
 
             .page-hero h1 {
-                font-size: 39px;
-                letter-spacing: -1.5px;
+                margin: 19px 0 15px;
+                font-size: 37px;
+                letter-spacing: -1px;
             }
 
             .page-description {
                 font-size: 14px;
             }
 
-            .timeline {
-                padding-bottom: 55px;
+            .hero-actions {
+                justify-content: flex-start;
+            }
+
+            .button {
+                padding: 11px 16px;
+                font-size: 12px;
+            }
+
+            .overview {
+                padding-bottom: 40px;
+            }
+
+            .process-section {
+                padding: 50px 0;
+            }
+
+            .section-heading {
+                margin-bottom: 28px;
             }
 
             .step {
-                grid-template-columns: 55px minmax(0, 1fr);
+                grid-template-columns: 46px minmax(0, 1fr);
                 gap: 11px;
-                margin-bottom: 15px;
             }
 
             .step-number {
-                min-height: 170px;
-                border-radius: 15px;
-                font-size: 21px;
+                width: 43px;
+                height: 43px;
+                border-width: 3px;
+                border-radius: 14px;
+                font-size: 14px;
+            }
+
+            .step:not(:last-child) .step-number-wrap::after {
+                top: 52px;
+                bottom: -24px;
             }
 
             .step-content {
@@ -463,20 +711,48 @@
                 border-radius: 16px;
             }
 
-            .step-content h2 {
-                font-size: 18px;
+            .step-content h3 {
+                font-size: 17px;
             }
 
             .step-content p {
                 font-size: 13px;
             }
 
-            .info-inner {
-                padding: 28px 24px;
+            .step-top {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 7px;
             }
 
-            .info-section {
+            .step-detail {
+                font-size: 11px;
+            }
+
+            .note-section {
+                padding: 45px 0;
+            }
+
+            .note-box {
+                grid-template-columns: 1fr;
+                gap: 13px;
+                padding: 22px;
+            }
+
+            .note-box h3 {
+                font-size: 17px;
+            }
+
+            .note-box p {
+                font-size: 13px;
+            }
+
+            .cta-section {
                 padding-bottom: 55px;
+            }
+
+            .cta-box {
+                padding: 38px 22px;
             }
 
             .footer-content {
@@ -487,37 +763,31 @@
 
         @media (max-width: 380px) {
             .brand {
-                font-size: 21px;
-            }
-
-            .nav-button {
-                padding: 0 10px;
-                font-size: 10px;
+                font-size: 19px;
             }
 
             .nav-links {
-                gap: 12px;
+                gap: 10px;
             }
 
             .nav-links a {
-                font-size: 11px;
+                font-size: 10px;
             }
 
             .page-hero h1 {
                 font-size: 34px;
             }
+        }
 
-            .step {
-                grid-template-columns: 45px minmax(0, 1fr);
-                gap: 8px;
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
             }
 
-            .step-number {
-                font-size: 18px;
-            }
-
-            .step-content {
-                padding: 14px;
+            *,
+            *::before,
+            *::after {
+                transition-duration: .01ms !important;
             }
         }
     </style>
@@ -531,14 +801,16 @@
 
             <a href="{{ url_for('index') }}" class="brand">
                 <span class="brand-icon">♻</span>
-                <span>EcoScan</span>
+                EcoScan
             </a>
 
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Navigasi utama">
                 <a href="{{ url_for('index') }}">Beranda</a>
                 <a href="{{ url_for('kategori') }}">Kategori</a>
                 <a href="{{ url_for('edukasi') }}">Edukasi</a>
-                <a href="{{ url_for('cara_kerja') }}" class="active">Cara Kerja</a>
+                <a href="{{ url_for('cara_kerja') }}"
+                   class="active"
+                   aria-current="page">Cara Kerja</a>
             </nav>
 
             <a href="{{ url_for('deteksi') }}" class="nav-button">
@@ -550,118 +822,285 @@
 
     <main>
 
-        <!-- HEADER HALAMAN -->
+        <!-- HERO -->
         <section class="page-hero">
             <div class="container">
 
-                <span class="eyebrow">🌱 From image to insight</span>
+                <span class="eyebrow">🌱 Kenali prosesnya</span>
 
                 <h1>
-                    Bagaimana <span>EcoScan</span> bekerja?
+                    Bagaimana <span>EcoScan</span> Bekerja?
                 </h1>
 
                 <p class="page-description">
-                    Prosesnya dimulai dari foto kemasan. Sistem akan
-                    memproses gambar, memprediksi kategori visual,
-                    lalu menampilkan informasi yang relevan.
+                    EcoScan membantu mengenali kategori kemasan sampah
+                    melalui gambar. Mulai dari mengunggah foto, pemrosesan
+                    gambar oleh sistem, hingga menampilkan hasil prediksi
+                    dan saran pemilahan.
                 </p>
 
+                <div class="hero-actions">
+                    <a href="#proses" class="button button-primary">
+                        Lihat Alur Proses ↓
+                    </a>
+
+                    <a href="{{ url_for('deteksi') }}"
+                       class="button button-secondary">
+                        Coba Deteksi ↗
+                    </a>
+                </div>
+
             </div>
         </section>
 
-        <!-- LANGKAH-LANGKAH -->
-        <section class="container timeline">
+        <!-- RINGKASAN PROSES -->
+        <section class="overview">
+            <div class="container overview-grid">
 
-            <div class="section-heading">
-                <span class="section-label">The process</span>
-                <h2>Lima langkah penggunaan EcoScan</h2>
-            </div>
-
-            <section class="step">
-                <div class="step-number">01</div>
-                <div class="step-content">
-                    <span class="step-label">INPUT IMAGE</span>
-                    <h2>Unggah foto kemasan</h2>
-                    <p>
-                        Pilih gambar JPG, PNG, atau WEBP dengan ukuran
-                        yang sesuai. Foto yang jelas dan pencahayaan
-                        yang baik dapat membantu proses pengenalan.
-                    </p>
-                </div>
-            </section>
-
-            <section class="step">
-                <div class="step-number">02</div>
-                <div class="step-content">
-                    <span class="step-label">PREPROCESSING</span>
-                    <h2>Persiapan gambar</h2>
-                    <p>
-                        Gambar akan dibaca dan disesuaikan dengan ukuran
-                        serta format yang diperlukan model klasifikasi.
-                    </p>
-                </div>
-            </section>
-
-            <section class="step">
-                <div class="step-number">03</div>
-                <div class="step-content">
-                    <span class="step-label">IMAGE CLASSIFICATION</span>
-                    <h2>Prediksi kategori</h2>
-                    <p>
-                        Model AI yang dilatih menggunakan dataset kemasan
-                        akan memprediksi kategori seperti sachet, botol
-                        plastik, gelas plastik, atau kotak makanan.
-                    </p>
-                </div>
-            </section>
-
-            <section class="step">
-                <div class="step-number">04</div>
-                <div class="step-content">
-                    <span class="step-label">RESULT</span>
-                    <h2>Lihat hasil dan saran</h2>
-                    <p>
-                        Hasil prediksi akan ditampilkan bersama skor
-                        keyakinan model dan panduan pemilahan yang sesuai.
-                        Prediksi merupakan perkiraan kategori visual,
-                        bukan kepastian jenis material.
-                    </p>
-                </div>
-            </section>
-
-            <section class="step">
-                <div class="step-number">05</div>
-                <div class="step-content">
-                    <span class="step-label">HISTORY</span>
-                    <h2>Simpan riwayat</h2>
-                    <p>
-                        Setelah terintegrasi, sistem dapat menyimpan
-                        waktu, nama gambar, dan hasil prediksi ke database
-                        MySQL agar dapat ditinjau kembali.
-                    </p>
-                </div>
-            </section>
-
-        </section>
-
-        <!-- AJAKAN DETEKSI -->
-        <section class="info-section">
-            <div class="container">
-
-                <div class="info-inner">
-                    <div class="info-copy">
-                        <h2>Siap mencoba EcoScan?</h2>
-
+                <article class="overview-card">
+                    <div class="overview-icon">📷</div>
+                    <div>
+                        <h3>1. Masukkan Gambar</h3>
                         <p>
-                            Unggah foto kemasan untuk mencoba fitur
-                            klasifikasi. Fitur prediksi dan penyimpanan
-                            riwayat bergantung pada integrasi model
-                            serta database aplikasi.
+                            Pilih foto kemasan yang ingin dikenali
+                            melalui halaman deteksi.
                         </p>
                     </div>
+                </article>
 
-                    <a href="{{ url_for('deteksi') }}" class="primary-button">
-                        Buka Halaman Deteksi ↗
+                <article class="overview-card">
+                    <div class="overview-icon">🤖</div>
+                    <div>
+                        <h3>2. Proses oleh AI</h3>
+                        <p>
+                            Model klasifikasi menganalisis gambar
+                            untuk memperkirakan kategorinya.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="overview-card">
+                    <div class="overview-icon">♻</div>
+                    <div>
+                        <h3>3. Lihat Hasil</h3>
+                        <p>
+                            Sistem menampilkan hasil prediksi beserta
+                            saran pemilahan yang relevan.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ALUR PROSES -->
+        <section class="process-section" id="proses">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">Step by step</span>
+                    <h2>Alur Penggunaan EcoScan</h2>
+                    <p>
+                        Berikut tahapan utama ketika pengguna mencoba
+                        mengenali jenis kemasan sampah menggunakan EcoScan.
+                    </p>
+                </div>
+
+                <div class="timeline">
+
+                    <!-- LANGKAH 1 -->
+                    <article class="step">
+                        <div class="step-number-wrap">
+                            <div class="step-number">01</div>
+                        </div>
+
+                        <div class="step-content">
+                            <div class="step-top">
+                                <span class="step-label">INPUT IMAGE</span>
+                                <span class="step-tag">Masukan pengguna</span>
+                            </div>
+
+                            <h3>Unggah Foto Kemasan</h3>
+                            <p>
+                                Pengguna membuka halaman deteksi dan memilih
+                                gambar kemasan dari perangkat. Gunakan foto
+                                yang jelas agar objek mudah terlihat.
+                            </p>
+
+                            <div class="step-detail">
+                                <span class="detail-icon">💡</span>
+                                <span>
+                                    Usahakan objek tidak tertutup, pencahayaan
+                                    cukup, dan latar belakang tidak terlalu ramai.
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- LANGKAH 2 -->
+                    <article class="step">
+                        <div class="step-number-wrap">
+                            <div class="step-number">02</div>
+                        </div>
+
+                        <div class="step-content">
+                            <div class="step-top">
+                                <span class="step-label">PREPROCESSING</span>
+                                <span class="step-tag">Persiapan gambar</span>
+                            </div>
+
+                            <h3>Gambar Diproses oleh Sistem</h3>
+                            <p>
+                                Aplikasi membaca gambar dan menyiapkannya
+                                sesuai format serta ukuran yang dibutuhkan
+                                oleh model klasifikasi.
+                            </p>
+
+                            <div class="step-detail">
+                                <span class="detail-icon">⚙</span>
+                                <span>
+                                    Tahap ini membantu memastikan gambar
+                                    memiliki bentuk masukan yang sesuai untuk model.
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- LANGKAH 3 -->
+                    <article class="step">
+                        <div class="step-number-wrap">
+                            <div class="step-number">03</div>
+                        </div>
+
+                        <div class="step-content">
+                            <div class="step-top">
+                                <span class="step-label">IMAGE CLASSIFICATION</span>
+                                <span class="step-tag">Prediksi AI</span>
+                            </div>
+
+                            <h3>Model Memprediksi Kategori</h3>
+                            <p>
+                                Model klasifikasi yang telah dilatih menggunakan
+                                dataset gambar menganalisis pola visual untuk
+                                memperkirakan kategori kemasan, seperti botol
+                                plastik, gelas plastik, sachet, dan bungkus makanan.
+                            </p>
+
+                            <div class="step-detail">
+                                <span class="detail-icon">🤖</span>
+                                <span>
+                                    Hasil bergantung pada data pelatihan,
+                                    kualitas foto, dan kemiripan objek dengan dataset.
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- LANGKAH 4 -->
+                    <article class="step">
+                        <div class="step-number-wrap">
+                            <div class="step-number">04</div>
+                        </div>
+
+                        <div class="step-content">
+                            <div class="step-top">
+                                <span class="step-label">RESULT</span>
+                                <span class="step-tag">Hasil deteksi</span>
+                            </div>
+
+                            <h3>Hasil dan Saran Pemilahan Ditampilkan</h3>
+                            <p>
+                                Setelah prediksi selesai, aplikasi menampilkan
+                                kategori yang diperkirakan beserta saran
+                                pemilahan untuk membantu pengguna memahami
+                                penanganan kemasan tersebut.
+                            </p>
+
+                            <div class="step-detail">
+                                <span class="detail-icon">♻</span>
+                                <span>
+                                    Hasil merupakan prediksi kategori visual.
+                                    Periksa bahan dan kondisi kemasan sebelum
+                                    menentukan cara pengelolaannya.
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- LANGKAH 5 - OPSIONAL -->
+                    <article class="step">
+                        <div class="step-number-wrap">
+                            <div class="step-number">05</div>
+                        </div>
+
+                        <div class="step-content">
+                            <div class="step-top">
+                                <span class="step-label">DATABASE</span>
+                                <span class="step-tag">Jika tersedia</span>
+                            </div>
+
+                            <h3>Penyimpanan Riwayat Deteksi</h3>
+                            <p>
+                                Jika fitur riwayat sudah dihubungkan dengan
+                                database, informasi seperti waktu deteksi,
+                                nama gambar, dan hasil prediksi dapat disimpan
+                                untuk ditinjau kembali.
+                            </p>
+
+                            <div class="step-detail">
+                                <span class="detail-icon">🗄</span>
+                                <span>
+                                    Penyimpanan riwayat memerlukan implementasi
+                                    database dan kode penyimpanan pada aplikasi.
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CATATAN -->
+        <section class="note-section">
+            <div class="container">
+
+                <div class="note-box">
+                    <div class="note-icon">💡</div>
+
+                    <div>
+                        <h3>Hal yang Perlu Diketahui</h3>
+
+                        <p>
+                            EcoScan merupakan aplikasi klasifikasi gambar untuk
+                            membantu edukasi pemilahan sampah. Hasil prediksi
+                            tidak selalu benar dan tidak dapat memastikan
+                            komposisi bahan hanya dari tampilan foto. Untuk
+                            menentukan apakah kemasan dapat didaur ulang,
+                            perhatikan label bahan dan ketentuan fasilitas
+                            pengolahan sampah setempat.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+
+                <div class="cta-box">
+                    <h2>Yuk, Coba Deteksi Kemasanmu!</h2>
+
+                    <p>
+                        Pilih gambar kemasan dan lihat bagaimana EcoScan
+                        mencoba mengenali kategorinya serta memberikan
+                        saran pemilahan.
+                    </p>
+
+                    <a href="{{ url_for('deteksi') }}" class="cta-button">
+                        Mulai Deteksi Sekarang ↗
                     </a>
                 </div>
 
@@ -670,19 +1109,19 @@
 
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - SAMA DENGAN BERANDA -->
     <footer>
         <div class="container footer-content">
-
             <div>
                 <div class="footer-brand">♻ EcoScan</div>
-                <p>Project Pengolahan Citra · Kenali, Pilah, Lestarikan.</p>
+                <p>
+                    Project Pengolahan Citra · Kenali, Pilah, Lestarikan.
+                </p>
             </div>
 
             <div class="footer-note">
                 Small steps, greener earth 🌱
             </div>
-
         </div>
     </footer>
 

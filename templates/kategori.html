@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kategori Kemasan — EcoScan</title>
+    <title>Kategori Sampah | EcoScan</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -28,14 +30,13 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 120px;
         }
 
         body {
+            font-family: "DM Sans", sans-serif;
             background: var(--cream);
             color: var(--text);
-            font-family: "DM Sans", sans-serif;
-            overflow-x: hidden;
+            line-height: 1.7;
         }
 
         a {
@@ -43,75 +44,69 @@
             text-decoration: none;
         }
 
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        .container {
-            width: min(1360px, 92%);
-            margin: 0 auto;
-        }
-
-        /* =========================
-           NAVBAR — DISESUAIKAN DENGAN BERANDA
-        ========================= */
-
+        /* NAVBAR — SAMA DENGAN BERANDA */
         .navbar {
             position: sticky;
             top: 0;
             z-index: 100;
-            width: 100%;
-            background: rgba(250, 249, 244, 0.97);
+            background: rgba(250, 249, 244, .96);
             border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
         }
 
-        .nav-content {
-            min-height: 120px;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            gap: 30px;
-        }
+        
+.container {
+    width: min(1240px, 92%);
+    margin: 0 auto;
+}
+
+
+        
+.nav-content {
+    min-height: 84px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+}
+
 
         .brand {
             display: inline-flex;
             align-items: center;
-            justify-self: start;
-            gap: 20px;
+            gap: 10px;
             font-family: "Manrope", sans-serif;
-            font-size: 48px;
+            font-size: 27px;
             font-weight: 800;
             white-space: nowrap;
-            color: #26372c;
+            color: var(--dark-green);
         }
 
         .brand-icon {
-            width: 86px;
-            height: 86px;
+            width: 48px;
+            height: 48px;
             display: grid;
             place-items: center;
-            border-radius: 25px;
+            border-radius: 15px;
             background: var(--green);
-            color: white;
-            font-size: 47px;
-            flex-shrink: 0;
+            color: #ffffff;
+            font-size: 27px;
+            line-height: 1;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 38px;
+            gap: 25px;
         }
 
         .nav-links a {
             color: #59665b;
-            font-size: 22px;
+            font-size: 14px;
             font-weight: 700;
             white-space: nowrap;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .nav-links a:hover,
@@ -120,426 +115,474 @@
         }
 
         .nav-button,
-        .primary-button {
+        .primary-button,
+        .secondary-button,
+        .cta-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             border-radius: 40px;
-            font-weight: 800;
-            transition: 0.2s;
+            font-weight: 700;
+            transition: .25s;
+            cursor: pointer;
         }
 
         .nav-button {
             justify-self: end;
-            min-height: 86px;
-            padding: 0 38px;
+            min-height: 47px;
+            padding: 0 21px;
             background: var(--green);
-            color: white;
-            font-size: 21px;
+            color: #ffffff;
+            font-size: 13px;
             white-space: nowrap;
         }
 
-        .nav-button:hover {
+        .nav-button:hover,
+        .primary-button:hover {
             background: var(--dark-green);
             transform: translateY(-2px);
         }
 
-        /* HEADER KATEGORI */
+        /* HERO */
+        .hero {
+            padding: 75px 7% 70px;
+            background:
+                radial-gradient(
+                    circle at 90% 15%,
+                    rgba(180, 205, 166, .45),
+                    transparent 30%
+                ),
+                linear-gradient(135deg, #edf3e9, #faf9f4 75%);
+        }
 
-        .page-hero {
-            padding: 65px 0 48px;
+        .hero-inner {
+            max-width: 1250px;
+            margin: auto;
         }
 
         .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 11px 16px;
+            display: inline-block;
+            padding: 9px 14px;
+            border: 1px solid #d7e3d1;
             border-radius: 30px;
-            background: var(--light-green);
+            background: rgba(255, 255, 255, .75);
             color: var(--green);
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
-        .page-hero h1 {
-            margin: 22px 0 18px;
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(38px, 5vw, 60px);
-            font-weight: 800;
-            line-height: 1.15;
+        .hero h1 {
+            margin-top: 22px;
+            color: var(--dark-green);
+            font: 800 clamp(38px, 5.5vw, 65px)/1.15 "Manrope", sans-serif;
             letter-spacing: -2px;
         }
 
-        .page-hero h1 span {
+        .hero h1 span {
             color: var(--green);
         }
 
-        .page-description {
-            max-width: 720px;
-            color: var(--muted);
-            font-size: 15px;
+        .hero p {
+            max-width: 650px;
+            margin-top: 20px;
+            color: #68766a;
+            font-size: 16px;
             line-height: 1.9;
         }
 
-        .category-summary {
+        .hero-pills {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 24px;
-            color: var(--green);
-            font-size: 14px;
+            flex-wrap: wrap;
+            gap: 11px;
+            margin-top: 26px;
+        }
+
+        .pill {
+            padding: 10px 15px;
+            border: 1px solid #dce5d6;
+            border-radius: 11px;
+            background: rgba(255, 255, 255, .7);
+            color: var(--dark-green);
+            font-size: 13px;
             font-weight: 700;
         }
 
-        .summary-icon {
-            width: 44px;
-            height: 44px;
-            display: grid;
-            place-items: center;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: white;
-            font-size: 22px;
-        }
-
-        /* DAFTAR KATEGORI */
-
-        .category-section {
-            padding: 15px 0 80px;
+        /* CATEGORY SECTION */
+        .section {
+            max-width: 1500px;
+            margin: auto;
+            padding: 65px 7% 80px;
         }
 
         .section-heading {
             display: flex;
             justify-content: space-between;
-            align-items: end;
-            gap: 25px;
-            margin-bottom: 32px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 28px;
         }
 
         .section-label {
+            margin-bottom: 8px;
             color: var(--green);
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 1.5px;
-            text-transform: uppercase;
         }
 
         .section-heading h2 {
-            margin-top: 12px;
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(28px, 3.5vw, 42px);
-            line-height: 1.2;
+            color: var(--dark-green);
+            font: 800 clamp(26px, 3vw, 36px)/1.3 "Manrope", sans-serif;
             letter-spacing: -1px;
         }
 
-        .section-heading > p {
-            max-width: 430px;
+        .section-heading p {
+            max-width: 440px;
             color: var(--muted);
             font-size: 14px;
             line-height: 1.9;
         }
 
-        /* GRID: 2 KOLOM DAN 2 BARIS */
+        .category-count {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 23px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .count-dot {
+            width: 9px;
+            height: 9px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #75a777;
+        }
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 28px;
-            align-items: stretch;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
         }
 
         .category-card {
             min-width: 0;
-            display: flex;
-            flex-direction: column;
             overflow: hidden;
             border: 1px solid var(--border);
-            border-radius: 24px;
-            background: var(--white);
-            transition: transform 0.25s, box-shadow 0.25s;
+            border-radius: 19px;
+            background: #ffffff;
+            transition:
+                transform .25s,
+                box-shadow .25s,
+                border-color .25s;
         }
 
         .category-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(25, 63, 44, 0.09);
+            border-color: #cbdcc7;
+            box-shadow: 0 14px 32px rgba(32, 75, 53, .09);
         }
 
-        /* FOTO KATEGORI */
-
-        .category-image-box {
+        .image-wrap {
             position: relative;
-            width: 100%;
-            height: 330px;
+            display: grid;
+            place-items: center;
+            height: 195px;
             overflow: hidden;
-            background: #f0f3eb;
+            padding: 16px;
+            background: linear-gradient(145deg, #f4f6ef, #e9f0e4);
         }
 
-        .category-image {
+        .image-wrap img {
             display: block;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.35s ease;
+            object-fit: contain;
+            transition: transform .3s;
         }
 
-        .category-card:hover .category-image {
-            transform: scale(1.03);
+        .category-card:hover .image-wrap img {
+            transform: scale(1.05);
         }
 
-        .image-fallback {
-            display: none;
+        .number {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 32px;
+            border: 1px solid #e2e9dd;
+            border-radius: 9px;
+            background: rgba(255, 255, 255, .94);
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .fallback {
             position: absolute;
             inset: 0;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 12px;
-            color: var(--green);
-            text-align: center;
-            background: #f0f3eb;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(145deg, #f4f6ef, #e9f0e4);
         }
 
-        .image-fallback span {
-            font-size: 65px;
+        .fallback[hidden] {
+            display: none;
         }
 
-        .image-fallback p {
-            font-size: 14px;
-            font-weight: 700;
+        .fallback span {
+            display: grid;
+            place-items: center;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #dce8d5;
+            border-radius: 30px;
+            background: #ffffff;
+            font-size: 48px;
         }
 
-        /* ISI KARTU */
-
-        .category-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 27px 28px 30px;
+        .card-content {
+            padding: 19px;
         }
 
-        .category-number {
-            color: #6b9470;
+        .category-type {
+            margin-bottom: 7px;
+            color: #668b62;
             font-size: 11px;
             font-weight: 800;
-            letter-spacing: 1.2px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.6;
         }
 
-        .category-content h3 {
-            margin: 12px 0;
-            font-family: "Manrope", sans-serif;
-            font-size: 23px;
-            font-weight: 800;
-            line-height: 1.4;
+        .card-content h3 {
+            color: var(--dark-green);
+            font: 800 17px/1.5 "Manrope", sans-serif;
         }
 
-        .category-description {
+        .card-content > p {
+            min-height: 76px;
+            margin-top: 9px;
             color: var(--muted);
             font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .tip-box {
-            width: 100%;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-top: 22px;
-            padding: 15px;
-            border-radius: 14px;
-            background: #edf3e9;
-        }
-
-        .tip-icon {
-            flex-shrink: 0;
-            font-size: 18px;
-        }
-
-        .tip-box p {
-            color: #526553;
-            font-size: 12px;
             line-height: 1.8;
         }
 
-        .tip-box strong {
-            color: var(--dark-green);
+        .tip {
+            margin-top: 14px;
+            padding: 13px;
+            border-radius: 10px;
+            background: #f1f5ed;
+            color: #59685b;
+            font-size: 13px;
+            line-height: 1.8;
         }
 
-        /* AJAKAN DETEKSI */
-
-        .info-section {
-            padding: 0 0 80px;
+        .tip strong {
+            color: var(--green);
+            font-size: 13px;
         }
 
-        .info-inner {
+        /* CTA DETEKSI */
+        .cta {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 35px;
-            padding: 45px;
-            border-radius: 27px;
-            background: var(--dark-green);
-            color: white;
+            align-items: center;
+            gap: 25px;
+            margin-top: 55px;
+            padding: 36px;
+            border-radius: 21px;
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(126, 166, 120, .23),
+                    transparent 32%
+                ),
+                var(--dark-green);
+            color: #ffffff;
         }
 
-        .info-copy {
-            max-width: 760px;
+        .cta-label {
+            color: #b9d5b2;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
         }
 
-        .info-copy h2 {
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(27px, 3vw, 38px);
-            line-height: 1.3;
+        .cta h2 {
+            margin-top: 8px;
+            font: 800 clamp(23px, 3vw, 32px)/1.35 "Manrope", sans-serif;
         }
 
-        .info-copy p {
-            margin-top: 13px;
+        .cta p {
+            max-width: 610px;
+            margin-top: 10px;
             color: #d1dfd2;
             font-size: 14px;
             line-height: 1.9;
         }
 
-        .primary-button {
+        .cta-button {
             flex-shrink: 0;
-            padding: 17px 25px;
-            background: white;
+            padding: 14px 20px;
+            border-radius: 40px;
+            background: #e8efe4;
             color: var(--dark-green);
             font-size: 14px;
-            white-space: nowrap;
+            font-weight: 800;
+            transition: transform .2s, background .2s;
         }
 
-        .primary-button:hover {
-            background: var(--light-green);
+        .cta-button:hover {
             transform: translateY(-2px);
+            background: #ffffff;
         }
 
         /* FOOTER */
+      footer {
+    padding: 27px 0;
+    border-top: 1px solid var(--border);
+}
 
-        footer {
-            padding: 30px 0;
-            border-top: 1px solid var(--border);
-        }
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+.footer-brand {
+    font-family: "Manrope", sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+}
 
-        .footer-brand {
-            font-family: "Manrope", sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-        }
+.footer-content p,
+.footer-note {
+    color: var(--muted);
+    font-size: 11px;
+}
 
-        .footer-content p {
-            margin-top: 5px;
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .footer-note {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        /* RESPONSIVE TABLET */
-
-        @media (max-width: 1400px) {
-            .nav-content {
-                min-height: 100px;
-                gap: 22px;
-            }
-
-            .brand {
-                gap: 13px;
-                font-size: 36px;
-            }
-
-            .brand-icon {
-                width: 66px;
-                height: 66px;
-                border-radius: 20px;
-                font-size: 36px;
+.footer-content p {
+    margin-top: 5px;
+}
+        /* RESPONSIVE */
+        @media (max-width: 1100px) {
+            .category-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
 
             .nav-links {
-                gap: 25px;
+                gap: 15px;
             }
 
-            .nav-links a {
-                font-size: 17px;
+            .nav-content {
+                gap: 15px;
             }
 
-            .nav-button {
-                min-height: 62px;
-                padding: 0 25px;
-                font-size: 16px;
+            .brand {
+                font-size: 24px;
             }
         }
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1000px) {
             .nav-content {
                 grid-template-columns: 1fr auto;
-                padding: 15px 0;
-                row-gap: 18px;
+                padding-top: 13px;
+                padding-bottom: 13px;
+                row-gap: 15px;
             }
 
             .nav-links {
                 grid-column: 1 / -1;
                 grid-row: 2;
-                justify-content: center;
                 flex-wrap: wrap;
-                gap: 23px;
-                padding-bottom: 5px;
+                gap: 20px;
+                padding-bottom: 4px;
+                justify-content: flex-start;
             }
 
             .nav-button {
                 grid-column: 2;
                 grid-row: 1;
             }
-
-            .category-image-box {
-                height: 290px;
-            }
-
-            .info-inner {
-                padding: 35px;
-            }
         }
 
-        /* RESPONSIVE HP */
-
-        @media (max-width: 650px) {
-            .container {
-                width: 90%;
+        @media (max-width: 780px) {
+            .hero {
+                padding: 52px 5%;
             }
 
-            .nav-content {
+            .section {
+                padding: 45px 5% 60px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 14px;
             }
 
+            .image-wrap {
+                height: 160px;
+            }
+
+            .card-content {
+                padding: 15px;
+            }
+
+            .card-content h3 {
+                font-size: 16px;
+            }
+
+            .card-content > p {
+                min-height: 90px;
+                font-size: 13px;
+            }
+
+            .tip {
+                font-size: 12px;
+            }
+
+            .cta {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 26px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .nav-content {
+                gap: 12px;
+            }
+
             .brand {
-                gap: 9px;
-                font-size: 24px;
+                font-size: 22px;
+                gap: 8px;
             }
 
             .brand-icon {
-                width: 44px;
-                height: 44px;
-                border-radius: 13px;
-                font-size: 25px;
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+                font-size: 23px;
             }
 
             .nav-button {
-                min-height: 42px;
-                padding: 0 13px;
+                min-height: 39px;
+                padding: 0 12px;
                 font-size: 11px;
             }
 
@@ -551,84 +594,58 @@
                 font-size: 12px;
             }
 
-            .page-hero {
-                padding: 42px 0 35px;
+            .eyebrow {
+                font-size: 11px;
             }
 
-            .page-hero h1 {
-                font-size: 39px;
-                letter-spacing: -1.5px;
+            .pill {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .category-grid {
+                grid-template-columns: 1fr;
             }
 
-            .page-description {
+            .image-wrap {
+                height: 220px;
+            }
+
+            .card-content {
+                padding: 19px;
+            }
+
+            .card-content > p {
+                min-height: auto;
                 font-size: 14px;
             }
 
-            .section-heading {
-                align-items: flex-start;
-                flex-direction: column;
+            .tip {
+                font-size: 13px;
             }
 
-            /* HP: SATU KARTU PER BARIS */
-
-            .category-grid {
-                grid-template-columns: 1fr;
-                gap: 22px;
-            }
-
-            .category-image-box {
-                height: 260px;
-            }
-
-            .category-content {
-                padding: 23px;
-            }
-
-            .category-content h3 {
-                font-size: 21px;
-            }
-
-            .info-inner {
-                align-items: flex-start;
-                flex-direction: column;
-                padding: 28px 24px;
-            }
-
-            .info-section,
-            .category-section {
-                padding-bottom: 55px;
-            }
-
-            .footer-content {
-                align-items: flex-start;
-                flex-direction: column;
+            .nav-links {
+                gap: 12px;
             }
         }
 
         @media (max-width: 380px) {
             .brand {
-                font-size: 21px;
-            }
-
-            .nav-button {
-                padding: 0 10px;
-                font-size: 10px;
+                font-size: 19px;
             }
 
             .nav-links {
-                gap: 12px;
+                gap: 10px;
             }
 
             .nav-links a {
                 font-size: 11px;
             }
 
-            .page-hero h1 {
-                font-size: 34px;
-            }
-
-            .category-image-box {
-                height: 220px;
+            .nav-button {
+                padding: 0 10px;
+                font-size: 10px;
             }
         }
     </style>
@@ -638,279 +655,427 @@
 
     <!-- NAVBAR -->
     <header class="navbar">
-        <div class="container nav-content">
+    <div class="container nav-content">
+        <a href="{{ url_for('index') }}" class="brand">
+            <span class="brand-icon">♻</span>
+            EcoScan
+        </a>
 
-            <a href="{{ url_for('index') }}" class="brand">
-                <span class="brand-icon">♻</span>
-                <span>EcoScan</span>
-            </a>
+        <nav class="nav-links" aria-label="Navigasi utama">
+            <a href="{{ url_for('index') }}">Beranda</a>
+            <a href="{{ url_for('kategori') }}" class="active">Kategori</a>
+            <a href="{{ url_for('edukasi') }}">Edukasi</a>
+            <a href="{{ url_for('cara_kerja') }}">Cara Kerja</a>
+        </nav>
 
-            <nav class="nav-links">
-                <a href="{{ url_for('index') }}">Beranda</a>
-                <a href="{{ url_for('kategori') }}" class="active">Kategori</a>
-                <a href="{{ url_for('edukasi') }}">Edukasi</a>
-                <a href="{{ url_for('cara_kerja') }}">Cara Kerja</a>
-            </nav>
+        <a href="{{ url_for('deteksi') }}" class="nav-button">
+            Mulai Deteksi ↗
+        </a>
+    </div>
+</header>
 
-            <a href="{{ url_for('deteksi') }}" class="nav-button">
-                Mulai Deteksi ↗
-            </a>
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-inner">
+            <span class="eyebrow">🌿 PANDUAN PEMILAHAN SAMPAH</span>
 
+            <h1>
+                Kenali Sampah,<br>
+                <span>Rawat Bumi Kita.</span>
+            </h1>
+
+            <p>
+                Setiap jenis sampah memiliki karakteristik dan cara penanganan
+                yang berbeda. Pelajari kategori sampah rumah tangga dan temukan
+                cara memilahnya dengan lebih bijak bersama EcoScan.
+            </p>
+
+            <div class="hero-pills">
+                <span class="pill">♻️ 14 kategori sampah</span>
+                <span class="pill">🌱 Edukasi lingkungan</span>
+                <span class="pill">🔎 Deteksi gambar</span>
+            </div>
         </div>
     </header>
 
-    <main>
+    <!-- DAFTAR KATEGORI -->
+    <main class="section">
 
-        <!-- HEADER HALAMAN -->
-        <section class="page-hero">
-            <div class="container">
+        <div class="section-heading">
+            <div>
+                <div class="section-label">JELAJAHI KATEGORI</div>
+                <h2>Kenali Setiap Jenisnya</h2>
+            </div>
 
-                <span class="eyebrow">🌱 Small steps, greener earth</span>
+            <p>
+                Pelajari contoh dan saran pemilahan setiap kategori.
+                Mulai dari kemasan sehari-hari hingga sampah yang memerlukan
+                penanganan khusus.
+            </p>
+        </div>
 
-                <h1>
-                    Kenali Kemasan.<br>
-                    <span>Pilah dengan Bijak.</span>
-                </h1>
+        <div class="category-count">
+            <span class="count-dot"></span>
+            14 kategori untuk membantu pemilahan sampah
+        </div>
 
-                <p class="page-description">
-                    Kenali empat kategori kemasan yang sering ditemukan
-                    dalam kehidupan sehari-hari. Pelajari ciri-cirinya
-                    dan ketahui langkah awal untuk mengelolanya dengan
-                    lebih bertanggung jawab.
+        <div class="category-grid">
+
+            <!-- 01 BOTOL PLASTIK -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">01</span>
+                    <div class="fallback" hidden><span>🧴</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/botol.jpg') }}"
+                        alt="Botol plastik"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Kemasan plastik</div>
+                    <h3>Botol Plastik</h3>
+                    <p>Botol minuman dan wadah plastik yang sering ditemukan dalam sampah rumah tangga.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Kosongkan isinya, bilas bila perlu, lalu pisahkan untuk pengumpulan daur ulang.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 02 GELAS PLASTIK -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">02</span>
+                    <div class="fallback" hidden><span>🥤</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/gelas.jpg') }}"
+                        alt="Gelas plastik"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Kemasan plastik</div>
+                    <h3>Gelas Plastik</h3>
+                    <p>Gelas minuman sekali pakai berbahan plastik yang banyak dijumpai sehari-hari.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Buang sisa minuman dan pisahkan sesuai fasilitas daur ulang setempat.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 03 KOTAK MAKANAN -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">03</span>
+                    <div class="fallback" hidden><span>🍱</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/kotak_makanan.jpg') }}"
+                        alt="Kotak makanan"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Kemasan makanan</div>
+                    <h3>Kotak Makanan</h3>
+                    <p>Wadah makanan bekas dengan bahan kemasan yang dapat berbeda-beda.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Bersihkan sisa makanan dan periksa bahan kemasannya sebelum memilah.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 04 SACHET -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">04</span>
+                    <div class="fallback" hidden><span>🛍️</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/sachet.jpg') }}"
+                        alt="Kemasan sachet"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Kemasan multilapis</div>
+                    <h3>Sachet</h3>
+                    <p>Kemasan kecil untuk produk seperti kopi, sampo, bumbu, dan kebutuhan sehari-hari.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Kosongkan isinya dan cari program pengumpulan kemasan sachet jika tersedia.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 05 KARDUS DAN KERTAS -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">05</span>
+                    <div class="fallback" hidden><span>📦</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/kardus_kertas.jpg') }}"
+                        alt="Kardus dan kertas"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Material kertas</div>
+                    <h3>Kardus dan Kertas</h3>
+                    <p>Kardus, kertas tulis, dan kemasan berbahan kertas.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Jaga agar tetap kering dan pisahkan dari kertas berminyak atau kotor.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 06 KALENG -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">06</span>
+                    <div class="fallback" hidden><span>🥫</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/kaleng.jpg') }}"
+                        alt="Kaleng bekas"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Material logam</div>
+                    <h3>Kaleng</h3>
+                    <p>Wadah logam bekas makanan atau minuman yang dapat dikumpulkan untuk pengolahan.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Kosongkan isinya dan waspadai bagian kaleng yang tajam.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 07 BOTOL KACA -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">07</span>
+                    <div class="fallback" hidden><span>🍾</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/botol_kaca.jpg') }}"
+                        alt="Botol kaca"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Material kaca</div>
+                    <h3>Botol Kaca</h3>
+                    <p>Botol atau wadah berbahan kaca yang perlu ditangani dengan hati-hati.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Pisahkan dari sampah lain. Jangan mengambil pecahan kaca dengan tangan kosong.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 08 SAMPAH ORGANIK -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">08</span>
+                    <div class="fallback" hidden><span>🍃</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/sampah_organik.jpg') }}"
+                        alt="Sampah organik"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Sampah alami</div>
+                    <h3>Sampah Organik</h3>
+                    <p>Sisa bahan alami seperti kulit buah, sayuran, dan sisa tumbuhan.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Pisahkan dari sampah anorganik dan pertimbangkan pengolahan menjadi kompos.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 09 SAMPAH PLASTIK -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">09</span>
+                    <div class="fallback" hidden><span>♻️</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/sampah_plastik.jpg') }}"
+                        alt="Sampah plastik lainnya"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Material plastik</div>
+                    <h3>Sampah Plastik</h3>
+                    <p>Barang plastik lain yang tidak termasuk kategori botol, gelas, atau sachet.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Periksa jenis bahannya dan pisahkan sesuai fasilitas daur ulang setempat.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 10 PUNTUNG ROKOK -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">10</span>
+                    <div class="fallback" hidden><span>🚬</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/puntung_rokok.jpg') }}"
+                        alt="Puntung rokok"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Sampah residu</div>
+                    <h3>Puntung Rokok</h3>
+                    <p>Sisa rokok yang dapat mengandung residu dan berpotensi mencemari lingkungan.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Pastikan benar-benar padam sebelum dibuang ke tempat sampah yang sesuai.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 11 SAMPAH RESIDU -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">11</span>
+                    <div class="fallback" hidden><span>🗑️</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/sampah_residu.jpg') }}"
+                        alt="Sampah residu"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Sampah residu</div>
+                    <h3>Sampah Residu</h3>
+                    <p>Sampah yang tidak dapat dipilah untuk pengolahan lain melalui fasilitas yang tersedia.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Pastikan bukan sampah berbahaya atau material yang masih bisa didaur ulang.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 12 BATERAI BEKAS -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">12</span>
+                    <div class="fallback" hidden><span>🔋</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/baterai_bekas.jpg') }}"
+                        alt="Baterai bekas"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Sampah khusus</div>
+                    <h3>Baterai Bekas</h3>
+                    <p>Baterai yang sudah tidak digunakan dan memerlukan penanganan khusus.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Simpan terpisah di tempat kering dan serahkan ke titik pengumpulan baterai.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 13 SAMPAH ELEKTRONIK -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">13</span>
+                    <div class="fallback" hidden><span>💻</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/sampah_elektronik.jpg') }}"
+                        alt="Sampah elektronik"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Sampah elektronik</div>
+                    <h3>Sampah Elektronik</h3>
+                    <p>Perangkat atau komponen elektronik yang rusak atau tidak lagi digunakan.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Jangan campur dengan sampah biasa. Cari layanan pengumpulan limbah elektronik.
+                    </div>
+                </div>
+            </article>
+
+            <!-- 14 ALUMINIUM -->
+            <article class="category-card">
+                <div class="image-wrap">
+                    <span class="number">14</span>
+                    <div class="fallback" hidden><span>🥈</span></div>
+                    <img
+                        src="{{ url_for('static', filename='images/aluminium.jpg') }}"
+                        alt="Material aluminium"
+                        loading="lazy"
+                        onerror="this.hidden=true;this.previousElementSibling.hidden=false;"
+                    >
+                </div>
+                <div class="card-content">
+                    <div class="category-type">Material logam</div>
+                    <h3>Aluminium</h3>
+                    <p>Material aluminium, termasuk benda atau kemasan berbahan aluminium.</p>
+                    <div class="tip">
+                        <strong>Saran pemilahan</strong><br>
+                        Pisahkan dari sampah lain dan kumpulkan untuk pengolahan logam.
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- TOMBOL DETEKSI -->
+        <section class="cta">
+            <div>
+                <div class="cta-label">MULAI LANGKAH KECILMU</div>
+                <h2>Yuk, kenali sampahmu!</h2>
+                <p>
+                    Unggah gambar sampah melalui fitur deteksi EcoScan
+                    untuk melihat hasil klasifikasi dari model AI yang digunakan.
                 </p>
-
-                <div class="category-summary">
-                    <span class="summary-icon">♻️</span>
-                    <span>4 kategori kemasan untuk kamu kenali</span>
-                </div>
-
             </div>
-        </section>
 
-        <!-- DAFTAR KATEGORI -->
-        <section class="category-section">
-            <div class="container">
-
-                <div class="section-heading">
-                    <div>
-                        <span class="section-label">Packaging categories</span>
-                        <h2>Jelajahi kategori kemasan</h2>
-                    </div>
-
-                    <p>
-                        Kenali bentuk kemasannya terlebih dahulu.
-                        Jenis material dan penerimaan daur ulangnya
-                        tetap perlu diperiksa secara terpisah.
-                    </p>
-                </div>
-
-                <div class="category-grid">
-
-                    <!-- KATEGORI 1 -->
-                    <article class="category-card">
-                        <div class="category-image-box">
-                            <img
-                                src="{{ url_for('static', filename='images/sachet.jpg') }}"
-                                alt="Contoh kemasan sachet"
-                                class="category-image"
-                                loading="lazy"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                            >
-
-                            <div class="image-fallback">
-                                <span>📦</span>
-                                <p>Foto Kemasan Sachet</p>
-                            </div>
-                        </div>
-
-                        <div class="category-content">
-                            <span class="category-number">CATEGORY 01</span>
-                            <h3>Kemasan Sachet</h3>
-
-                            <p class="category-description">
-                                Kemasan berukuran kecil yang umum digunakan
-                                untuk kopi, sampo, saus, bumbu, dan produk
-                                kebutuhan sehari-hari. Sebagian sachet
-                                tersusun dari beberapa lapisan material.
-                            </p>
-
-                            <div class="tip-box">
-                                <span class="tip-icon">🌿</span>
-                                <p>
-                                    <strong>Tips pemilahan:</strong>
-                                    Kosongkan sisa produk terlebih dahulu.
-                                    Periksa apakah tersedia program pengumpulan
-                                    kemasan sachet di daerahmu.
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- KATEGORI 2 -->
-                    <article class="category-card">
-                        <div class="category-image-box">
-                            <img
-                                src="{{ url_for('static', filename='images/botol.jpg') }}"
-                                alt="Contoh botol plastik"
-                                class="category-image"
-                                loading="lazy"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                            >
-
-                            <div class="image-fallback">
-                                <span>🧴</span>
-                                <p>Foto Botol Plastik</p>
-                            </div>
-                        </div>
-
-                        <div class="category-content">
-                            <span class="category-number">CATEGORY 02</span>
-                            <h3>Botol Plastik</h3>
-
-                            <p class="category-description">
-                                Kemasan berbentuk botol yang sering digunakan
-                                untuk air minum, minuman ringan, dan produk
-                                rumah tangga. Jenis materialnya dapat berbeda
-                                bergantung pada produk dan label kemasannya.
-                            </p>
-
-                            <div class="tip-box">
-                                <span class="tip-icon">🌿</span>
-                                <p>
-                                    <strong>Tips pemilahan:</strong>
-                                    Kosongkan isinya, periksa label bahan,
-                                    dan ikuti aturan pengumpulan sampah
-                                    yang berlaku di daerahmu.
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- KATEGORI 3 -->
-                    <article class="category-card">
-                        <div class="category-image-box">
-                            <img
-                                src="{{ url_for('static', filename='images/gelas.jpg') }}"
-                                alt="Contoh gelas plastik minuman"
-                                class="category-image"
-                                loading="lazy"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                            >
-
-                            <div class="image-fallback">
-                                <span>🥤</span>
-                                <p>Foto Gelas Plastik</p>
-                            </div>
-                        </div>
-
-                        <div class="category-content">
-                            <span class="category-number">CATEGORY 03</span>
-                            <h3>Gelas Plastik</h3>
-
-                            <p class="category-description">
-                                Wadah minuman yang biasa digunakan untuk
-                                es kopi, teh, jus, dan minuman siap saji.
-                                Gelas beserta tutupnya bisa menggunakan
-                                material yang berbeda.
-                            </p>
-
-                            <div class="tip-box">
-                                <span class="tip-icon">🌿</span>
-                                <p>
-                                    <strong>Tips pemilahan:</strong>
-                                    Buang sisa minuman, pisahkan bagian
-                                    yang berbeda bila memungkinkan, dan
-                                    periksa simbol materialnya.
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- KATEGORI 4 -->
-                    <article class="category-card">
-                        <div class="category-image-box">
-                            <img
-                                src="{{ url_for('static', filename='images/kotak_makanan.jpg') }}"
-                                alt="Contoh kotak makanan"
-                                class="category-image"
-                                loading="lazy"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                            >
-
-                            <div class="image-fallback">
-                                <span>🍱</span>
-                                <p>Foto Kotak Makanan</p>
-                            </div>
-                        </div>
-
-                        <div class="category-content">
-                            <span class="category-number">CATEGORY 04</span>
-                            <h3>Kotak Makanan</h3>
-
-                            <p class="category-description">
-                                Wadah untuk menyimpan atau membawa makanan,
-                                misalnya kotak makan berbahan plastik,
-                                kotak styrofoam, atau wadah berbahan kertas
-                                dengan lapisan tertentu.
-                            </p>
-
-                            <div class="tip-box">
-                                <span class="tip-icon">🌿</span>
-                                <p>
-                                    <strong>Tips pemilahan:</strong>
-                                    Pisahkan sisa makanan dan kenali bahan
-                                    wadahnya. Tidak semua kotak makanan
-                                    diterima oleh fasilitas daur ulang.
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- AJAKAN DETEKSI -->
-        <section class="info-section">
-            <div class="container">
-
-                <div class="info-inner">
-                    <div class="info-copy">
-                        <h2>Sudah mengenali jenis kemasannya?</h2>
-
-                        <p>
-                            Coba fitur deteksi EcoScan untuk mendapatkan
-                            prediksi kategori berdasarkan foto kemasan.
-                            Hasil prediksi merupakan bantuan pengenalan
-                            visual, bukan kepastian jenis materialnya.
-                        </p>
-                    </div>
-
-                    <a href="{{ url_for('deteksi') }}" class="primary-button">
-                        Coba Deteksi ↗
-                    </a>
-                </div>
-
-            </div>
+            <a href="{{ url_for('deteksi') }}" class="cta-button">
+                Mulai Deteksi ♻️
+            </a>
         </section>
 
     </main>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="container footer-content">
-
-            <div>
-                <div class="footer-brand">♻ EcoScan</div>
-                <p>Project Pengolahan Citra · Kenali, Pilah, Lestarikan.</p>
-            </div>
-
-            <div class="footer-note">
-                Small steps, greener earth 🌱
-            </div>
-
+  <footer>
+    <div class="container footer-content">
+        <div>
+            <div class="footer-brand">♻ EcoScan</div>
+            <p>Project Pengolahan Citra · Kenali, Pilah, Lestarikan.</p>
         </div>
-    </footer>
+
+        <div class="footer-note">
+            Small steps, greener earth 🌱
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
